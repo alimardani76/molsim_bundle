@@ -156,6 +156,28 @@ Weighted IQR local $\delta_{\rm elec}$ & 0.614 & 2.019\\
 
 From the global Henry calculations, $\Delta\ln K_H^{\rm full-LJ}$ for CO$_2$ is 0.162 in M029 and 2.032 in M085. The corresponding N$_2$ values are 0.021 and 0.032. Thus the M085--M029 difference is 1.871 log units for CO$_2$ but only 0.011 for N$_2$.
 
+\section{PI-directed existing-data robustness additions}
+
+\subsection{Framework bootstrap}
+
+Five thousand framework-level bootstrap resamples were used to quantify uncertainty in the existing-data additions. The median attractive increment is 2.537 (95\% interval 2.438--2.624), the median electrostatic increment is 0.309 (0.293--0.323), and the attractive--electrostatic Spearman correlation is $-0.089$ with a 95\% interval of $-0.222$ to 0.050. The attractive and electrostatic increments remain positive in every bootstrap resample.
+
+For the frozen geometry-only out-of-fold predictions, $R^2_{\rm attr}=0.874$ and $R^2_{\rm elec}=0.188$, giving $G=0.686$. Resampling those frozen out-of-fold predictions gives a 95\% interval of 0.560--0.905 for $G$. This interval quantifies uncertainty in the realized out-of-fold prediction set; the model was not refitted inside each bootstrap.
+
+\subsection{Endpoint-matched mechanism non-uniqueness}
+
+Among all 28,203 framework pairs, the closest 5\% in final $\ln S$ were retained before mechanism distance was inspected. This gives 1,411 endpoint-matched pairs with a maximum endpoint difference of 0.0538. Their median mechanism distance is 0.189, the 95th percentile is 0.750, and the 99th percentile is 1.534. The strongest selected pair differs by 0.016 in final $\ln S$ but by 2.585 in the two-dimensional mechanism vector.
+
+\subsection{Additional leverage sensitivity}
+
+Removing the upper 5\% of the attractive increment gives $\rho_{\rm attr,elec}=-0.092$; removing the upper 5\% of the electrostatic increment gives $-0.084$; removing the upper 5\% of final selectivity gives $-0.179$. Removing the ten largest attraction-driven rank movers gives $-0.105$, and removing the ten largest electrostatic rank movers gives $-0.083$. The weak population association is therefore not created by a few extreme frameworks.
+
+\subsection{Geometry-conditioned shuffle diagnostic}
+
+A secondary geometry-conditioned shuffle diagnostic was also run using deterministic balanced strata in the first two principal components of the 14 frozen geometry descriptors. The first two components explain 92.87\% of the descriptor variance. Eight-, ten-, and twelve-stratum definitions were tested, with 10,000 within-stratum shuffles for each target while the original out-of-fold prediction was held fixed.
+
+This diagnostic did \emph{not} support the stronger hypothesis that the attraction coordinate should show a larger excess-over-geometry-null association than the electrostatic coordinate. For the primary ten-stratum analysis, observed prediction--target Spearman correlations are 0.924 for attraction and 0.293 for electrostatics, whereas the corresponding shuffle-null 97.5th percentiles are 0.894 and 0.154. The same qualitative result occurs for eight and twelve strata. We therefore do not use this diagnostic as evidence that electrostatics is independent of geometry. Its role is to bound the claim: conventional geometry predicts attraction much more strongly in absolute out-of-fold performance, but some finer-grained geometry association with the electrostatic increment remains detectable.
+
 \section{Population-wide rank changes}
 
 \begin{table}[H]

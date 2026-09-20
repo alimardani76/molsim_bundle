@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "central_claim_changed": false,
+  "new_simulation_used": false,
+  "figures_regenerated": [
+    2,
+    3,
+    5
+  ],
+  "main_manuscript_updated": true,
+  "si_updated": true,
+  "gate_b_non_supporting_result_retained": true,
+  "predictability_gap": 0.6864474808470018,
+  "predictability_gap_ci95": [
+    0.5597498842208415,
+    0.9053752180468466
+  ],
+  "endpoint_twin_count": 1411,
+  "strongest_endpoint_difference": 0.0159852642539473,
+  "strongest_mechanism_distance": 2.585403803111559,
+  "checks": {
+    "fig2_pdf": true,
+    "fig3_pdf": true,
+    "fig5_pdf": true,
+    "main_endpoint_twins": true,
+    "main_predictability_gap": true,
+    "main_rank_10pct": true,
+    "si_negative_diagnostic_retained": true
+  }
+}

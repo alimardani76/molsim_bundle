@@ -1,0 +1,8 @@
+metric,value
+predictability_gap,0.6864474808470018
+predictability_gap_ci95_low,0.5597498842208415
+predictability_gap_ci95_high,0.9053752180468466
+attr_r2,0.8744874648851713
+elec_r2,0.1880399840381694
+attr_mae_ratio,0.3227911908172701
+elec_mae_ratio,0.9934046016193973

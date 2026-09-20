@@ -62,12 +62,14 @@ Restoring attractive Lennard--Jones interactions changes the sign of the physica
 
 Restoring electrostatics increases selectivity in every framework, with a median $\Delta\ln S_{\rm elec}=0.309$, equivalent to a 1.36-fold multiplicative contribution. Its magnitude, however, varies much more strongly from framework to framework than this positive sign alone suggests.
 
-The attractive and electrostatic increments are only weakly associated across the population (Spearman $\rho=-0.089$; Figure~\ref{fig:map}). A framework that receives a large attractive enhancement does not necessarily receive a large electrostatic enhancement. This does not imply statistical independence; rather, once attractive interactions have established CO$_2$ preference, electrostatics introduces an additional dimension of framework-specific recognition.
+The attractive and electrostatic increments are only weakly associated across the population (Spearman $\rho=-0.089$; framework-bootstrap 95\% interval $-0.222$ to $0.050$; Figure~\ref{fig:map}). A framework that receives a large attractive enhancement does not necessarily receive a large electrostatic enhancement. This does not imply statistical independence; rather, once attractive interactions have established CO$_2$ preference, electrostatics introduces an additional dimension of framework-specific recognition.
+
+The final selectivity is also mechanistically non-unique. We froze an endpoint-matching rule before inspecting pair identities: the closest 5\% of all 28,203 framework pairs in $|\Delta\ln S_{\rm full}|$ were retained (1,411 pairs; cutoff 0.0538) and then ranked by Euclidean distance in $(\Delta\ln S_{\rm attr},\Delta\ln S_{\rm elec})$. Within this endpoint-matched set, the median mechanism distance is 0.189 and the 95th percentile is 0.750. The strongest pair differs by only 0.016 in final $\ln S$ but has a mechanism distance of 2.585: its attractive/electrostatic increments are 2.211/2.001 versus 4.238/0.396. Thus nearly identical endpoint performance can be assembled from sharply different balances of attraction and electrostatics without altering the population-level sequential mechanism.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=.78\linewidth]{fig2_mechanism_map.pdf}
-\caption{\textbf{Attractive and electrostatic enhancements are weakly associated across the MOF population.} Each point is one framework. The preselected attraction- and electrostatic-matched pairs are highlighted as case studies. The absence of imposed mechanism classes is deliberate: the central result is a continuous nested interaction pathway rather than categorical ``steric'', ``dispersion'', and ``electrostatic'' MOF types.}
+\caption{\textbf{Final selectivity can be similar despite different attraction/electrostatic balances.} (a) Continuous mechanism space for 238 MOFs, colored by final $\ln S_{\rm full}$. The connected open circles mark the strongest pair selected by the frozen endpoint-matching rule. (b) Distribution of mechanism distance among the 1,411 pairs in the closest 5\% of final-selectivity differences. The analysis remains continuous; no categorical mechanism classes are imposed.}
 \label{fig:map}
 \end{figure}
 
@@ -77,12 +79,12 @@ A critical alternative explanation is that the interaction coordinates merely re
 
 Geometry-only ExtraTrees models give five-fold cross-validated $R^2=0.835$ for $\ln S_{\rm WCA}$ and $R^2=0.874$ for $\Delta\ln S_{\rm attr}$. Their mean absolute errors are 0.033 and 0.177, compared with median-predictor baselines of 0.093 and 0.549. Conventional pore geometry therefore contains substantial information about the repulsive reference and attractive confinement.
 
-The electrostatic increment behaves differently. Geometry gives $R^2=0.188$, but its MAE of 0.146 is essentially identical to the median-predictor MAE of 0.147. Thus some population-level association remains, but geometry provides almost no practical improvement in absolute error for $\Delta\ln S_{\rm elec}$. Importantly, the same geometry descriptors still predict the final $\ln S_{\rm full}$ well ($R^2=0.845$; MAE 0.189 versus a 0.501 baseline). The role of this analysis is therefore mechanistic rather than predictive: the framework-to-framework variation in electrostatic recognition is not adequately reduced to the same pore-geometry information that captures the preceding stages.
+The electrostatic increment behaves differently. Geometry gives $R^2=0.188$, but its MAE of 0.146 is essentially identical to the median-predictor MAE of 0.147. Thus some population-level association remains, but geometry provides almost no practical improvement in absolute error for $\Delta\ln S_{\rm elec}$. The attraction--electrostatics predictability gap, $G=R^2_{\rm attr}-R^2_{\rm elec}$, is 0.686; a 5,000-resample framework bootstrap of the frozen out-of-fold predictions gives a 95\% interval of 0.560--0.905. Importantly, the same geometry descriptors still predict the final $\ln S_{\rm full}$ well ($R^2=0.845$; MAE 0.189 versus a 0.501 baseline). The role of this analysis is therefore mechanistic rather than predictive: the framework-to-framework variation in electrostatic recognition is not adequately reduced to the same pore-geometry information that captures the preceding stages. We do not interpret this as geometry being irrelevant to electrostatics.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{fig3_geometry_information.pdf}
-\caption{\textbf{Pore geometry captures the repulsive and attractive stages much better than electrostatic variation.} Left: five-fold cross-validated $R^2$ of geometry-only models for each interaction coordinate and the final endpoint. Right: model MAE normalized by the corresponding median-predictor MAE; a value of one indicates no practical improvement over the baseline. This is used as a mechanistic control, not as the primary objective of the study.}
+\caption{\textbf{Pore geometry captures the attractive stage much more strongly than electrostatic variation.} (a) Five-fold out-of-fold $R^2$ of geometry-only models for the nested coordinates and final endpoint. (b) MAE normalized by the corresponding median-predictor MAE for the attractive and electrostatic increments; a value of one indicates no practical improvement over the baseline. The attraction--electrostatics $R^2$ gap is 0.686 with a framework-bootstrap 95\% interval of 0.560--0.905. This analysis is a mechanistic control rather than an ML benchmark.}
 \label{fig:geometry}
 \end{figure}
 
@@ -103,14 +105,14 @@ Probability-supported insertion fields provide a spatial counterpart. Within the
 
 \subsection{The interaction stages alter screening priorities in different ways}
 
-The physical distinction between attraction and electrostatics has a direct consequence for candidate ordering. Restoring attraction reorganizes the population globally: the Spearman correlation between WCA and LJ-only ranks is $-0.751$, the median absolute displacement is 102 positions, and 183 of 238 frameworks move by at least 50 positions. The largest attraction-driven promotion and demotion are 234 and 226 positions.
+The physical distinction between attraction and electrostatics has a direct consequence for candidate ordering. Restoring attraction reorganizes the population globally: WCA and LJ-only ranks have Spearman $\rho=-0.751$ and Kendall $\tau=-0.560$, with a median absolute displacement of 102 positions. Fully 89.5\% of frameworks move by at least 10\% of the 238-position range, 72.7\% move by at least 25\%, and 41.2\% move by at least 50\%. The top-10, top-25, and top-10\% sets have zero overlap between WCA and LJ-only rankings. The largest attraction-driven promotion and demotion are 234 and 226 positions.
 
-Electrostatics acts differently. LJ-only and full ranks remain strongly correlated ($\rho=0.905$), with a median absolute displacement of only 9 positions, and only 12 of 238 frameworks move by at least 50 positions. Nevertheless, selected frameworks respond strongly, with promotions up to 175 positions. The ranking result is therefore a consequence of the mechanism identified above: attraction creates the global CO$_2$-selective landscape, whereas electrostatics mainly differentiates particular frameworks within it.
+Electrostatics acts differently. LJ-only and full ranks remain strongly correlated ($\rho=0.905$, $\tau=0.801$), with a median absolute displacement of only 9 positions. Only 17.2\%, 3.8\%, and 2.5\% of frameworks move by at least 10\%, 25\%, and 50\% of the ranking range, respectively; the top-10 overlap is 6/10 and the top-25 overlap is 18/25. Nevertheless, selected frameworks respond strongly, with promotions up to 175 positions. The ranking result is therefore a consequence of the mechanism identified above: attraction creates the global CO$_2$-selective landscape, whereas electrostatics mainly differentiates particular frameworks within it.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{fig5_rank_trajectories.pdf}
-\caption{\textbf{The attractive and electrostatic stages affect candidate ordering differently.} Every point is one MOF. Restoring attraction broadly reorganizes the WCA ranking, consistent with its role in creating CO$_2$ preference. Restoring electrostatics preserves the global LJ-only ordering much more strongly while producing large framework-specific outliers. Dashed lines denote unchanged rank.}
+\caption{\textbf{The attractive and electrostatic stages affect candidate ordering differently.} Each point is one MOF and the dashed line denotes unchanged rank. Restoring attraction produces broad rank reconstruction, including zero overlap of the top-10, top-25, and top-10\% sets with the WCA ordering. Restoring electrostatics preserves the global LJ-only order much more strongly while producing selected large rank changes. Insets report correlation, displacement, and top-set statistics.}
 \label{fig:ranks}
 \end{figure}
 
@@ -156,6 +158,16 @@ $r_{c,ij}=2^{1/6}\sigma_{ij}$ and shifted to zero at the cutoff. Molecular Widom
 \subsection{Geometry control}
 
 The geometry analysis used 14 conventional pre-simulation descriptors. Target-derived adsorption quantities, identifiers, filenames, cluster labels, and other variables capable of encoding the target were excluded before fitting. ExtraTrees regressors used 500 trees, minimum leaf size three, a maximum-feature fraction of 0.7, and five-fold shuffled cross-validation with random seed 20260918. The model is used here as a mechanistic control---to test how much of each interaction coordinate is already encoded by pore geometry---rather than as a predictive contribution in its own right. Performance was evaluated with $R^2$, MAE, and median-predictor MAE.
+
+\subsection{Mechanism fingerprint, endpoint matching, and uncertainty}
+
+For each framework we define the continuous mechanism vector
+\begin{equation}
+\mathbf{m}_i=(\Delta\ln S_{{\rm attr},i},\Delta\ln S_{{\rm elec},i}).
+\end{equation}
+Endpoint-mechanism non-uniqueness was evaluated before inspecting pair identities. All 28,203 framework pairs were ranked by $|\ln S_{{\rm full},i}-\ln S_{{\rm full},j}|$; the closest 5\% were retained, and only within this frozen subset were pairs ranked by Euclidean distance $||\mathbf{m}_i-\mathbf{m}_j||_2$.
+
+Framework-level uncertainty intervals for the median increments, the attractive--electrostatic Spearman correlation, and the geometry predictability gap were obtained from 5,000 bootstrap resamples with random seed 20260920. For the predictability gap, the already-frozen out-of-fold predictions were resampled; the model was not refitted within each bootstrap.
 
 \subsection{Matched-pair analysis}
 

@@ -1,0 +1,13 @@
+metric,value
+endpoint_match_fraction_of_all_pairs,0.05
+endpoint_match_count,1411.0
+endpoint_difference_cutoff,0.0538435060415665
+mechanism_distance_median,0.1888508877942589
+mechanism_distance_q95,0.7500572114964288
+mechanism_distance_q99,1.534115114882373
+strongest_endpoint_difference,0.0159852642539473
+strongest_mechanism_distance,2.585403803111559
+strongest_attr_i,2.21101888325875
+strongest_elec_i,2.0006886354361053
+strongest_attr_j,4.238360968316919
+strongest_elec_j,0.3962582395336502
