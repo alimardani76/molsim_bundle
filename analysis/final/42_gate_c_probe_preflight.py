@@ -151,12 +151,27 @@ def find_backend_candidates() -> pd.DataFrame:
     ).reset_index(drop=True)
 
 def snapshot_candidates(cands: pd.DataFrame, n=5):
+    # Windows-safe short snapshot names. The source path is preserved in the
+    # report, so the copied filename does not need to encode the full tree.
+    if SNAP.exists():
+        shutil.rmtree(SNAP)
     SNAP.mkdir(parents=True, exist_ok=True)
     copied = []
-    for _, r in cands.head(n).iterrows():
+    seen_sha = set()
+    rank = 0
+    for _, r in cands.iterrows():
+        if len(copied) >= n:
+            break
+        if r["sha256"] in seen_sha:
+            continue
+        # Handoff-package copies are archival duplicates, not preferred backends.
+        if "handoff_package" in str(r["relative_path"]).lower():
+            continue
+        seen_sha.add(r["sha256"])
+        rank += 1
         src = Path(r["path"])
-        safe_name = re.sub(r"[^A-Za-z0-9_.-]+", "__", r["relative_path"])
-        dst = SNAP / safe_name
+        stem = re.sub(r"[^A-Za-z0-9_.-]+", "_", src.stem)[:48]
+        dst = SNAP / f"{rank:02d}_{stem}_{str(r['sha256'])[:10]}.py"
         shutil.copy2(src, dst)
         copied.append({
             "source": r["relative_path"],
