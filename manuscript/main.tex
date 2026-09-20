@@ -3,7 +3,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[margin=2.05cm]{geometry}
 \usepackage{microtype,booktabs,tabularx,array,amsmath,amssymb,mathtools,graphicx,float,caption,subcaption,hyperref,siunitx,bm}
-\graphicspath{{../figures/main/}{../figures/si/}}
+\graphicspath{{figures/main/}{figures/si/}}
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=teal,urlcolor=teal}
 
 \title{How CO$_2$/N$_2$ Selectivity Emerges in Metal--Organic Frameworks:\\Repulsive Baselines, Attractive Reversal, and Electrostatic Recognition}
@@ -14,18 +14,16 @@
 \maketitle
 
 \begin{abstract}
-High-throughput screening ranks metal--organic frameworks (MOFs) by adsorption performance, but a final selectivity does not reveal which intermolecular interactions produced it. We construct a nested reference-potential decomposition of Henry-regime CO$_2$/N$_2$ selectivity across 238 MOFs, separating a repulsive Weeks--Chandler--Andersen (WCA) reference from the increments obtained by restoring Lennard--Jones attraction and then electrostatics. Repulsive accessibility alone favored N$_2$ in every framework (median $S_{\rm WCA}=0.816$). Restoring attraction reversed this preference throughout the panel, with a median $\Delta\ln S_{\rm attr}=2.537$ (12.65-fold), whereas electrostatics supplied a further positive but strongly framework-dependent increment (median $\Delta\ln S_{\rm elec}=0.309$, 1.36-fold). The attractive and electrostatic increments were only weakly associated ($\rho=-0.089$). Conventional pore geometry predicted the WCA and attractive coordinates strongly ($R^2=0.835$ and 0.874) and also predicted the final selectivity ($R^2=0.845$), yet provided essentially no reduction in mean absolute error for the electrostatic increment relative to a median predictor (0.146 versus 0.147). A geometry-matched pair makes this representation boundary explicit: M029 and M085 are mutual nearest neighbors in the geometry space but have electrostatic increments of 0.141 and 2.001. Global Henry coefficients and probability-supported spatial fields show that this contrast is overwhelmingly CO$_2$-driven and is accompanied by a markedly different local electrostatic response. The results show that accurate endpoint prediction can conceal missing mechanistic information and provide a controlled route for separating accessibility, attraction, and electrostatic recognition in MOF screening.
+High-throughput screening identifies selective metal--organic frameworks (MOFs), but a final selectivity does not reveal which intermolecular interactions created that preference. We test whether CO$_2$/N$_2$ selectivity can arise through alternative repulsive, attractive, and electrostatic routes by applying a nested reference-potential decomposition to 238 MOFs. The Weeks--Chandler--Andersen (WCA) state provides a repulsive reference, restoring the full Lennard--Jones interaction defines an attractive increment, and restoring electrostatics defines the final increment. Rather than three interchangeable routes, the population reveals a sequential mechanism. The repulsive WCA reference favors N$_2$ in every framework (median $S_{\rm WCA}=0.816$); restoring attraction reverses this preference throughout the panel (median $\Delta\ln S_{\rm attr}=2.537$, 12.65-fold); electrostatics then supplies a further positive but strongly framework-dependent enhancement (median $\Delta\ln S_{\rm elec}=0.309$, 1.36-fold). Attractive and electrostatic increments are only weakly associated ($\rho=-0.089$). As a mechanistic control, conventional pore geometry predicts the WCA and attractive coordinates strongly but provides essentially no reduction in mean absolute error for the electrostatic increment relative to a median predictor (0.146 versus 0.147), even though it predicts the final selectivity well. A geometry-matched pair makes the distinction explicit: M029 and M085 are mutual nearest neighbors in geometry space yet have electrostatic increments of 0.141 and 2.001; global Henry coefficients and probability-supported insertion fields show that the contrast is overwhelmingly CO$_2$-driven. Attraction reorganizes the candidate ranking globally, whereas electrostatics largely preserves the global order while strongly promoting selected frameworks. The results refine a multiple-route picture into a sequential physical mechanism: repulsive baseline, attractive creation of CO$_2$ preference, and framework-specific electrostatic differentiation.
 \end{abstract}
 
 \section{Introduction}
 
-Metal--organic frameworks (MOFs) provide a large design space for adsorption-based separations, and high-throughput molecular simulation has become a standard way to screen that space \cite{haldoupis2012charges,burner2023arcmof}. For post-combustion CO$_2$/N$_2$ separation, screening studies commonly reduce each framework to quantities such as uptake, Henry coefficient, working capacity, or selectivity. These endpoints are useful for ranking materials, but they do not state which intermolecular interactions made a framework selective.
+Metal--organic frameworks (MOFs) provide a large design space for adsorption-based separations, and high-throughput molecular simulation has become a standard way to rank candidate structures \cite{haldoupis2012charges,burner2023arcmof}. Yet ranking and mechanism are different questions. A Henry selectivity can identify which framework performs well without revealing whether its preference arose from short-range repulsion, attractive confinement, electrostatic recognition, or a combination of these effects.
 
-The importance of electrostatics in CO$_2$/N$_2$ adsorption is already well established. Haldoupis, Nair, and Sholl showed that reliable charge assignment is central to large-scale screening of quadrupolar CO$_2$ and N$_2$ \cite{haldoupis2012charges}. In a later screening of 3,806 MOFs, Daglar and Keskin explicitly repeated simulations with framework electrostatics removed and found substantial changes in CO$_2$/N$_2$ adsorption performance and in the identity of top candidates \cite{daglar2018screening}. Such comparisons establish that electrostatics matters, but a full-versus-uncharged comparison still combines steric exclusion and dispersive attraction in the same non-electrostatic reference.
+All three contributions are physically plausible for CO$_2$/N$_2$ adsorption. Electrostatic interactions and charge assignment are already known to influence screening outcomes for these quadrupolar molecules \cite{haldoupis2012charges,daglar2018screening}. Geometry-based descriptors can also screen low-pressure adsorption behavior \cite{fernandez2016geometry}, while chemistry- and topology-aware representations add information beyond geometry alone \cite{anderson2018porechemistry,moosavi2020diversity,burner2020deeplearning}. These literatures establish that geometry and chemistry both matter, but they do not determine where, along a controlled interaction pathway, CO$_2$ preference is actually created.
 
-A parallel literature asks how much adsorption performance can be inferred from structure alone. Geometry-based descriptors can provide effective low-cost filters for CO$_2$ and N$_2$ adsorption \cite{fernandez2016geometry}, whereas large-scale machine-learning studies have shown that chemistry-aware descriptors can substantially improve low-pressure CO$_2$ working-capacity and CO$_2$/N$_2$ selectivity prediction beyond geometry-only models \cite{burner2020deeplearning}. These results establish a representation hierarchy for endpoint prediction. They do not, however, identify which physical contribution is captured or missed by a representation.
-
-Here we connect these two questions. We construct a nested sequence of reference potentials that separates repulsive accessibility, Lennard--Jones attraction, and electrostatic recognition for the same framework population. The WCA construction provides the repulsive Lennard--Jones reference \cite{weeks1971wca}; related WCA splitting has previously been used to isolate repulsive contributions in MOF adsorption models \cite{campbell2018polar}. Restoring the full Lennard--Jones potential then introduces attraction, and restoring framework--guest electrostatics gives the complete model:
+We therefore return to the physical question that motivated this study: \emph{when a MOF prefers CO$_2$ over N$_2$, what roles are played by repulsive interactions, attractive confinement, and electrostatics?} We test whether high-performing frameworks occupy alternative interaction routes or whether these contributions enter in a more ordered sequence. The analysis uses a nested set of force-field counterfactuals. The Weeks--Chandler--Andersen construction retains the repulsive branch of the Lennard--Jones interaction \cite{weeks1971wca}; related WCA splitting has precedent in MOF interaction modeling \cite{campbell2018polar}. Restoring the complete Lennard--Jones potential then introduces attraction, and restoring framework--guest charges adds electrostatics:
 \begin{equation}
 \ln S_{\rm full}
 =
@@ -35,108 +33,108 @@ Here we connect these two questions. We construct a nested sequence of reference
 +
 \Delta\ln S_{\rm elec},
 \end{equation}
-with
+where
 $\Delta\ln S_{\rm attr}=\ln S_{\rm LJ}-\ln S_{\rm WCA}$
 and
 $\Delta\ln S_{\rm elec}=\ln S_{\rm full}-\ln S_{\rm LJ}$.
-These are controlled finite differences between reference potentials, not uniquely separable experimental free-energy components.
+These quantities are finite differences between force-field reference states, not uniquely separable experimental free-energy components. The WCA state should likewise be interpreted as a \emph{repulsive reference}, not as an independent hard-geometric measurement of steric accessibility.
 
-Across 238 MOFs, we ask which interaction stage first creates CO$_2$ preference, whether attractive and electrostatic enhancements track one another, and which of these coordinates is encoded by conventional pore geometry. We then use a geometry-matched pair and local insertion fields to test whether a large electrostatic increment corresponds to a distinct spatial response. The resulting picture is sequential rather than symmetric: repulsion sets an N$_2$-favoring baseline, attraction creates CO$_2$ selectivity throughout this panel, and electrostatics provides an additional framework-specific recognition channel that conventional pore geometry does not adequately resolve.
+Across a preselected 240-structure ARC--MOF panel, 238 frameworks form the complete common analysis set. We first establish where CO$_2$ preference appears along the nested pathway. We then ask whether the electrostatic increment simply tracks attraction, whether conventional pore geometry explains the observed variation, and whether geometry-matched structures can display sharply different electrostatic responses. The resulting evidence refines the original multiple-route hypothesis: in this CO$_2$/N$_2$ panel, the mechanism is predominantly sequential---a repulsive N$_2$-favoring baseline, an attractive reversal toward CO$_2$, and a subsequent framework-specific electrostatic enhancement.
 
 \section{Results}
 
-\subsection{Repulsion sets the baseline and attraction creates CO$_2$ preference}
+\subsection{The repulsive WCA reference sets an N$_2$-favoring baseline; attraction creates CO$_2$ preference}
 
-The common analysis set contains 238 MOFs evaluated in WCA, LJ-only, and full interaction states. The nested identity closes numerically to a maximum residual of $8.88\times10^{-16}$.
+The common analysis set contains 238 MOFs with WCA, LJ-only, and full CO$_2$/N$_2$ calculations. The nested identity closes numerically to a maximum residual of $8.88\times10^{-16}$.
 
-Under the WCA reference, all 238 frameworks are N$_2$-favoring. The median $\ln S_{\rm WCA}$ is $-0.204$, corresponding to a median $S_{\rm WCA}=0.816$. Repulsive accessibility therefore does not constitute a successful CO$_2$-selectivity route in this population.
+Under the WCA reference, all 238 frameworks favor N$_2$. The median $\ln S_{\rm WCA}$ is $-0.204$, corresponding to a median $S_{\rm WCA}=0.816$. Repulsive interactions alone therefore do not produce CO$_2$ preference in this panel.
 
-Restoring attractive Lennard--Jones interactions changes the result qualitatively. $\Delta\ln S_{\rm attr}$ is positive for every framework, with a median of 2.537, corresponding to a 12.65-fold multiplicative contribution. The LJ-only selectivity is CO$_2$-favoring throughout the panel. Attraction is therefore the interaction stage that reverses the repulsive N$_2$ preference and establishes CO$_2$ selectivity under these models.
+Restoring attractive Lennard--Jones interactions changes the sign of the physical conclusion. $\Delta\ln S_{\rm attr}$ is positive for every framework, with a median of 2.537, corresponding to a 12.65-fold multiplicative contribution. The LJ-only selectivity is CO$_2$-favoring throughout the panel. Attraction is therefore the interaction stage that creates CO$_2$ preference under these models, reversing the N$_2$-favoring repulsive baseline.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{fig1_decomposition.pdf}
-\caption{\textbf{Nested reference-potential decomposition of CO$_2$/N$_2$ selectivity.} The WCA state retains repulsive accessibility, the LJ-only state restores attractive Lennard--Jones interactions, and the full state additionally restores electrostatics. The population distributions reveal an N$_2$-favoring repulsive baseline, a positive attractive increment throughout the panel, and a positive but more heterogeneous electrostatic increment.}
+\caption{\textbf{The nested interaction pathway reveals where CO$_2$ preference appears.} The WCA state provides the repulsive reference, the LJ-only state restores attractive Lennard--Jones interactions, and the full state additionally restores electrostatics. Across 238 MOFs the repulsive reference is N$_2$-favoring, the attractive increment is positive throughout the panel and reverses that preference, and electrostatics supplies an additional positive but heterogeneous increment.}
 \label{fig:decomp}
 \end{figure}
 
-\subsection{Attraction and electrostatics are weakly associated across the population}
+\subsection{Electrostatics differentiates frameworks after attraction has created CO$_2$ preference}
 
-Restoring electrostatics provides a further positive enhancement in every framework. The median $\Delta\ln S_{\rm elec}$ is 0.309, equivalent to a 1.36-fold multiplicative contribution, while the largest increments approach 2 log units.
+Restoring electrostatics increases selectivity in every framework, with a median $\Delta\ln S_{\rm elec}=0.309$, equivalent to a 1.36-fold multiplicative contribution. Its magnitude, however, varies much more strongly from framework to framework than this positive sign alone suggests.
 
-The attractive and electrostatic increments are only weakly associated across the population (Spearman $\rho=-0.089$; Figure~\ref{fig:map}). A framework's gain from attractive confinement therefore provides little information about the additional gain it receives from electrostatic interactions. This does not imply statistical independence; it shows that the two finite-difference coordinates encode substantially different framework-to-framework variation.
+The attractive and electrostatic increments are only weakly associated across the population (Spearman $\rho=-0.089$; Figure~\ref{fig:map}). A framework that receives a large attractive enhancement does not necessarily receive a large electrostatic enhancement. This does not imply statistical independence; rather, once attractive interactions have established CO$_2$ preference, electrostatics introduces an additional dimension of framework-specific recognition.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=.78\linewidth]{fig2_mechanism_map.pdf}
-\caption{\textbf{Attractive and electrostatic enhancements are weakly associated across 238 MOFs.} Each point is one framework. The frozen attraction- and electrostatic-matched pairs are highlighted only as case studies; no categorical mechanism boundaries are imposed on the population.}
+\caption{\textbf{Attractive and electrostatic enhancements are weakly associated across the MOF population.} Each point is one framework. The preselected attraction- and electrostatic-matched pairs are highlighted as case studies. The absence of imposed mechanism classes is deliberate: the central result is a continuous nested interaction pathway rather than categorical ``steric'', ``dispersion'', and ``electrostatic'' MOF types.}
 \label{fig:map}
 \end{figure}
 
-\subsection{Geometry predicts the endpoint while missing the electrostatic increment}
+\subsection{Pore geometry is a mechanistic control: it captures the repulsive and attractive stages much better than electrostatic variation}
 
-We next ask how much information about each mechanistic coordinate is already available from conventional pre-simulation pore geometry. ExtraTrees models using 14 geometry descriptors give five-fold cross-validated $R^2=0.835$ for $\ln S_{\rm WCA}$ and $R^2=0.874$ for $\Delta\ln S_{\rm attr}$. Their mean absolute errors are 0.033 and 0.177, compared with median-predictor baselines of 0.093 and 0.549.
+A critical alternative explanation is that the interaction coordinates merely restate conventional pore geometry. We therefore use 14 pre-simulation geometry descriptors as a control and ask how much information they contain about each stage of the decomposition.
 
-The electrostatic increment behaves differently. Geometry gives $R^2=0.188$, but its MAE of 0.146 is essentially identical to the baseline MAE of 0.147. Thus the descriptors retain some population-level association with $\Delta\ln S_{\rm elec}$, yet provide almost no practical gain in absolute prediction error. In contrast, the same geometry set predicts the final $\ln S_{\rm full}$ well ($R^2=0.845$; MAE 0.189 versus a 0.501 baseline). Accurate prediction of the endpoint therefore does not imply that the representation resolves every interaction contribution used to construct that endpoint.
+Geometry-only ExtraTrees models give five-fold cross-validated $R^2=0.835$ for $\ln S_{\rm WCA}$ and $R^2=0.874$ for $\Delta\ln S_{\rm attr}$. Their mean absolute errors are 0.033 and 0.177, compared with median-predictor baselines of 0.093 and 0.549. Conventional pore geometry therefore contains substantial information about the repulsive reference and attractive confinement.
+
+The electrostatic increment behaves differently. Geometry gives $R^2=0.188$, but its MAE of 0.146 is essentially identical to the median-predictor MAE of 0.147. Thus some population-level association remains, but geometry provides almost no practical improvement in absolute error for $\Delta\ln S_{\rm elec}$. Importantly, the same geometry descriptors still predict the final $\ln S_{\rm full}$ well ($R^2=0.845$; MAE 0.189 versus a 0.501 baseline). The role of this analysis is therefore mechanistic rather than predictive: the framework-to-framework variation in electrostatic recognition is not adequately reduced to the same pore-geometry information that captures the preceding stages.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{fig3_geometry_information.pdf}
-\caption{\textbf{Geometry predicts the final endpoint while providing little practical gain for the electrostatic increment.} Left: five-fold cross-validated $R^2$ of geometry-only ExtraTrees models. Right: model MAE normalized by the corresponding median-predictor MAE; a value of one indicates no improvement over that baseline.}
+\caption{\textbf{Pore geometry captures the repulsive and attractive stages much better than electrostatic variation.} Left: five-fold cross-validated $R^2$ of geometry-only models for each interaction coordinate and the final endpoint. Right: model MAE normalized by the corresponding median-predictor MAE; a value of one indicates no practical improvement over the baseline. This is used as a mechanistic control, not as the primary objective of the study.}
 \label{fig:geometry}
 \end{figure}
 
 \subsection{A geometry-matched pair exposes framework-specific electrostatic recognition}
 
-M029 and M085 form the strongest local counterexample. In the standardized nine-descriptor geometry space used for matched-pair selection, they are mutual nearest neighbors (distance 0.258). Their repulsive log-selectivities are correspondingly close, $-0.201$ and $-0.198$. Yet their electrostatic increments are 0.141 and 2.001, a difference of 1.860, corresponding to a 6.42-fold contrast in the multiplicative electrostatic contribution.
+The preselected electrostatic matched pair M029/M085 provides a stringent local test of the population-level interpretation. In the standardized nine-descriptor geometry space used for pair selection, the two structures are mutual nearest neighbors (distance 0.258). Their repulsive log-selectivities are nearly identical, $-0.201$ and $-0.198$, yet their electrostatic increments are 0.141 and 2.001, a difference of 1.860, corresponding to a 6.42-fold contrast in the multiplicative electrostatic contribution.
 
-The global Henry coefficients identify which gas drives this divergence. Restoring electrostatics changes $\ln K_H$ for CO$_2$ by 0.162 in M029 and 2.032 in M085, whereas the N$_2$ changes are only 0.021 and 0.032. The between-framework difference is therefore 1.871 log units for CO$_2$ but only 0.011 for N$_2$: the much larger electrostatic selectivity of M085 is overwhelmingly CO$_2$-driven.
+The global Henry coefficients identify which gas drives this divergence. Restoring electrostatics changes $\ln K_H$ for CO$_2$ by 0.162 in M029 and 2.032 in M085, whereas the N$_2$ changes are only 0.021 and 0.032. The between-framework difference is therefore 1.871 log units for CO$_2$ but only 0.011 for N$_2$: the stronger electrostatic recognition in M085 is overwhelmingly CO$_2$-driven.
 
-Local insertion fields provide a spatial counterpart to this scalar result. Within the 99.5\%-probability-supported pore region, M029 remains close to locally neutral over much of the accessible volume, whereas M085 shows a substantially more positive and heterogeneous full-minus-LJ selectivity response. The probability-weighted median local increment is 0.042 for M029 and 0.534 for M085; 57.6\% and 79.1\% of the corresponding probability weight lies in regions with positive local electrostatic selectivity increments. These maps localize the electrostatic perturbation but do not identify a specific binding motif.
+Probability-supported insertion fields provide a spatial counterpart. Within the common 99.5\%-probability-supported insertion region, M029 remains close to locally neutral over much of the sampled space, whereas M085 shows a substantially more positive and heterogeneous full-minus-LJ selectivity response. The probability-weighted median local increment is 0.042 for M029 and 0.534 for M085; 57.6\% and 79.1\% of the corresponding probability weight lies in regions with positive local electrostatic selectivity increments. These fields localize the response but do not identify a specific chemical binding motif.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{fig4_matched_electrostatic.pdf}
-\caption{\textbf{A geometry-matched pair exposes framework-specific electrostatic recognition.} M029 and M085 are mutual nearest neighbors in the geometry space used for pair selection. Top left: selectivity trajectories through WCA, LJ-only, and full interaction states. Top right: gas-specific global full-minus-LJ changes in $\ln K_H$, showing that the between-framework contrast is dominated by CO$_2$. Bottom: probability-supported local full-minus-LJ selectivity increments. Global increments are taken from the Henry calculations; spatial fields are used only to localize the response.}
+\caption{\textbf{A geometry-matched pair exposes framework-specific electrostatic recognition.} M029 and M085 are mutual nearest neighbors in the geometry space used for pair selection. Top left: selectivity trajectories through WCA, LJ-only, and full interaction states. Top right: gas-specific global full-minus-LJ changes in $\ln K_H$, showing that the between-framework contrast is dominated by CO$_2$. Bottom: probability-weighted $z$-projections of the local full-minus-LJ selectivity increment. White regions lie outside the 99.5\%-probability-support masks, not necessarily outside the geometric pore. Global increments are taken from the production Henry calculations; the fields are used only to localize the response.}
 \label{fig:matched}
 \end{figure}
 
-\subsection{Attraction and electrostatics reorder candidates in different ways}
+\subsection{The interaction stages alter screening priorities in different ways}
 
-Restoring attraction changes the candidate ordering globally. The Spearman correlation between WCA and LJ-only ranks is $-0.751$, and the median absolute rank displacement is 102 positions among 238 frameworks. The largest attraction-driven promotion is 234 positions and the largest demotion is 226.
+The physical distinction between attraction and electrostatics has a direct consequence for candidate ordering. Restoring attraction reorganizes the population globally: the Spearman correlation between WCA and LJ-only ranks is $-0.751$, the median absolute displacement is 102 positions, and 183 of 238 frameworks move by at least 50 positions. The largest attraction-driven promotion and demotion are 234 and 226 positions.
 
-Electrostatics has a different population-level effect. LJ-only and full ranks remain strongly correlated ($\rho=0.905$), with a median absolute displacement of only 9 positions. Nevertheless, specific frameworks are strongly affected: the largest electrostatic promotion is 175 positions and the largest demotion is 55. Attraction therefore reorganizes the ranking broadly, whereas electrostatics mostly preserves the global ordering while creating important framework-specific outliers.
+Electrostatics acts differently. LJ-only and full ranks remain strongly correlated ($\rho=0.905$), with a median absolute displacement of only 9 positions, and only 12 of 238 frameworks move by at least 50 positions. Nevertheless, selected frameworks respond strongly, with promotions up to 175 positions. The ranking result is therefore a consequence of the mechanism identified above: attraction creates the global CO$_2$-selective landscape, whereas electrostatics mainly differentiates particular frameworks within it.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{fig5_rank_trajectories.pdf}
-\caption{\textbf{Successive interaction stages have different effects on candidate ordering.} Every point is one MOF. Restoring attraction broadly reorganizes the WCA ranking, whereas restoring electrostatics leaves the global LJ-only ordering much more intact but produces large outlier promotions. Dashed lines denote unchanged rank.}
+\caption{\textbf{The attractive and electrostatic stages affect candidate ordering differently.} Every point is one MOF. Restoring attraction broadly reorganizes the WCA ranking, consistent with its role in creating CO$_2$ preference. Restoring electrostatics preserves the global LJ-only ordering much more strongly while producing large framework-specific outliers. Dashed lines denote unchanged rank.}
 \label{fig:ranks}
 \end{figure}
 
 \section{Discussion}
 
-Previous high-throughput studies established that electrostatics is important for CO$_2$/N$_2$ adsorption and that turning framework charges off can change both Henry selectivities and the identity of top candidates \cite{haldoupis2012charges,daglar2018screening}. The present decomposition refines that conclusion. In this panel, electrostatics is not the interaction stage that first creates CO$_2$ preference: the WCA reference is N$_2$-favoring throughout, and restoring Lennard--Jones attraction alone reverses that baseline throughout. Electrostatics then acts as a second, strongly framework-dependent recognition coordinate.
+The results refine the hypothesis that selective MOFs might occupy several interchangeable repulsive, attractive, and electrostatic routes. For this CO$_2$/N$_2$ panel, the population-level mechanism is instead predominantly sequential. The repulsive WCA reference favors N$_2$ throughout; Lennard--Jones attraction reverses that baseline throughout; electrostatics then provides an additional enhancement whose magnitude depends strongly on the framework. The central physical result is therefore not merely that all three interaction types matter, but that they play different roles in creating the final selectivity.
 
-The representation result provides a complementary distinction. Geometry-based screening has long been useful for low-pressure adsorption \cite{fernandez2016geometry}, while chemistry-aware descriptors improve CO$_2$ working-capacity and selectivity prediction in large MOF libraries \cite{burner2020deeplearning}. Our results locate one reason for that hierarchy. The same conventional pore geometry that predicts $\ln S_{\rm full}$ accurately captures the repulsive and attractive coordinates but barely improves absolute prediction error for $\Delta\ln S_{\rm elec}$. Endpoint accuracy can therefore hide a representation boundary: a model may predict the final number without resolving one of the physical increments that constructs it.
+The geometry control helps locate those roles. Conventional pore geometry contains substantial information about the WCA and attractive stages, consistent with accessibility and confinement being strongly coupled to pore architecture. Electrostatic variation is different: the same geometry descriptors provide essentially no improvement in absolute error over a median baseline for $\Delta\ln S_{\rm elec}$, even though they predict the final selectivity well. Prior work has already established that chemistry and topology add adsorption information beyond geometry \cite{anderson2018porechemistry,moosavi2020diversity,burner2020deeplearning}; the present result places that distinction along a controlled interaction pathway.
 
-The M029/M085 pair turns that population result into a controlled local comparison. The two structures are mutual nearest neighbors in the geometry space used for pair selection and have almost identical WCA selectivities, yet their electrostatic responses differ by 1.860 log units. The contrast is almost entirely associated with CO$_2$, and the insertion fields show a correspondingly stronger and more heterogeneous local response in M085. The maps do not establish which atom type or chemical motif is responsible; that requires a validated chemistry-aware local representation beyond the scope of the present study.
+M029/M085 demonstrates that the distinction is not merely a population-level statistical artifact. The pair is nearly indistinguishable in the geometry space used for matching and has almost identical repulsive selectivity, yet the frameworks diverge sharply when electrostatics is restored. The difference is almost entirely associated with CO$_2$, and the insertion fields show a correspondingly stronger and more heterogeneous local response in M085. The fields do not identify which atom type or functional motif causes the response; resolving that question would require a separate validated chemistry-aware local analysis.
 
-The ranking analysis shows why retaining the interaction coordinates matters for screening. Attraction changes the ordering of the panel globally, consistent with its role in reversing the repulsive baseline. Electrostatics leaves the overall LJ-only order more recognizable but can still rescue individual frameworks by more than 100 positions. A final rank therefore answers which material performs well under the complete model, whereas the nested coordinates reveal how it became competitive.
-
-The conclusions are deliberately bounded to Henry-regime thermodynamic recognition at 298~K in rigid frameworks under the selected molecular models. A preselected 15-MOF DREIDING-linker/UFF-Co bridge produced only small changes in the WCA excess chemical potentials and essentially unchanged WCA rankings (Supporting Information), supporting the repulsive-baseline interpretation within that perturbation. Equivalent force-field robustness has not been established for the LJ-only or electrostatic increments. The study does not address finite-pressure mixtures, transport, framework flexibility, or transfer to other gas pairs.
+The conclusions are deliberately bounded. They describe Henry-regime thermodynamic recognition at 298~K in rigid frameworks under the selected molecular models. A preselected 15-MOF DREIDING-linker/UFF-Co bridge gives essentially unchanged WCA rankings, supporting the repulsive-reference conclusion within that bounded perturbation (Supporting Information), but equivalent force-field robustness has not been established for the LJ-only or electrostatic coordinates. We do not infer finite-pressure mixture behavior, transport selectivity, framework-flexibility effects, or transfer to other gas pairs from the present results.
 
 \section{Methods}
 
 \subsection{Framework panel and molecular models}
 
-The starting panel contained 240 ARC--MOF structures \cite{burner2023arcmof}; 238 had the complete WCA, LJ-only, and full CO$_2$/N$_2$ quantities required for the common analysis. Frameworks were treated as rigid at 298~K. Full and LJ-only Henry calculations used RASPA3 version 3.0.29 \cite{ran2024raspa3,dubbeldam2016raspa}. The framework Lennard--Jones model used element-level UFF parameters \cite{rappe1992uff} with Lorentz--Berthelot mixing, a 12~\AA{} cutoff, shifted truncation, and no tail correction. Framework charges were taken from the ARC--MOF structure records. Full calculations used Ewald electrostatics; LJ-only calculations set framework and guest pseudoatom charges to zero while preserving the Lennard--Jones definitions.
+A panel of 240 ARC--MOF structures \cite{burner2023arcmof} was selected before the project-owned WCA, attractive, and electrostatic coordinates were calculated; 238 had the complete WCA, LJ-only, and full CO$_2$/N$_2$ quantities required for the common analysis. Frameworks were treated as rigid at 298~K. Full and LJ-only Henry calculations used RASPA3 version 3.0.29 \cite{ran2024raspa3,dubbeldam2016raspa}. The framework Lennard--Jones model used element-level UFF parameters \cite{rappe1992uff} with Lorentz--Berthelot mixing, a 12~\AA{} cutoff, shifted truncation, and no tail correction. Framework electrostatics used the ARC--MOF REPEAT partial charges stored with the structures. CO$_2$ used the rigid three-site model of Garc\'ia-S\'anchez et al. \cite{garciasanchez2009co2}, and N$_2$ used the rigid three-site quadrupolar model of Martin-Calvo et al. \cite{martincalvo2015gases}. Full calculations used Ewald electrostatics; LJ-only calculations set framework and guest pseudoatom charges to zero while preserving the Lennard--Jones definitions.
 
-The full calculation used 50,000 Widom cycles per seed and the LJ-only calculation used 10,000 cycles per seed, with three matched default seeds and adaptive extension of unresolved cases. The exact protocol, guest geometries, and retained RASPA force-field definitions are archived with the publication source data.
+The full calculation used 50,000 Widom cycles per seed and the LJ-only calculation used 10,000 cycles per seed, with three matched default seeds (58101--58103) and adaptive extension of unresolved cases. Exact protocol, guest geometries, and retained force-field definitions are archived with the project source data.
 
 \subsection{Nested reference potentials}
 
-For gas $g$ and interaction state $x$, the Henry-regime selectivity is
+For gas $g$ and interaction state $x$,
 \begin{equation}
 \ln S_x
 =
@@ -146,22 +144,22 @@ For gas $g$ and interaction state $x$, the Henry-regime selectivity is
 \qquad
 x\in\{\mathrm{WCA},\mathrm{LJ},\mathrm{full}\}.
 \end{equation}
-The two increments are
+The finite-difference coordinates are
 \begin{align}
 \Delta\ln S_{\rm attr} &= \ln S_{\rm LJ}-\ln S_{\rm WCA},\\
 \Delta\ln S_{\rm elec} &= \ln S_{\rm full}-\ln S_{\rm LJ}.
 \end{align}
 
 For the WCA state, each framework--guest Lennard--Jones pair potential was truncated at
-$r_{c,ij}=2^{1/6}\sigma_{ij}$ and shifted to zero at the cutoff. Molecular Widom insertion \cite{widom1963} was used to evaluate the repulsive reference. Independent equal-length WCA seeds were pooled in Boltzmann-factor space before conversion back to the excess chemical potential. Seed counts, precision diagnostics, and exclusion sensitivity are reported in the Supporting Information.
+$r_{c,ij}=2^{1/6}\sigma_{ij}$ and shifted to zero at the cutoff. Molecular Widom insertion \cite{widom1963} was used to evaluate this repulsive reference. WCA is therefore a force-field-defined short-range repulsive counterfactual and is not equated with an independent hard-geometric steric-accessibility measurement. Independent equal-length WCA seeds were pooled in Boltzmann-factor space before conversion back to the excess chemical potential. Seed counts and precision diagnostics are reported in the Supporting Information.
 
-\subsection{Geometry information analysis}
+\subsection{Geometry control}
 
-The geometry-only analysis used 14 conventional pre-simulation descriptors. Target-derived adsorption quantities, identifiers, filenames, cluster labels, and other variables that could encode the response were excluded before fitting. ExtraTrees regressors used 500 trees, minimum leaf size three, a maximum-feature fraction of 0.7, and five-fold shuffled cross-validation with random seed 20260918. Prediction was used as an information-content diagnostic rather than as the primary objective. Performance was evaluated with $R^2$, MAE, and the MAE of a median predictor.
+The geometry analysis used 14 conventional pre-simulation descriptors. Target-derived adsorption quantities, identifiers, filenames, cluster labels, and other variables capable of encoding the target were excluded before fitting. ExtraTrees regressors used 500 trees, minimum leaf size three, a maximum-feature fraction of 0.7, and five-fold shuffled cross-validation with random seed 20260918. The model is used here as a mechanistic control---to test how much of each interaction coordinate is already encoded by pore geometry---rather than as a predictive contribution in its own right. Performance was evaluated with $R^2$, MAE, and median-predictor MAE.
 
 \subsection{Matched-pair analysis}
 
-Matched pairs were selected from the closest 2\% of all framework pairs in a standardized nine-descriptor geometry space and then ranked by contrast in the target mechanistic coordinate. The retained attraction pair is M089/M192 and the retained electrostatic pair is M029/M085. For the electrostatic pair, M029 and M085 are mutual nearest neighbors in that geometry space. Pair selection preceded the spatial interpretation.
+Matched pairs were selected from the closest 2\% of all framework pairs in a standardized nine-descriptor geometry space and then ranked by contrast in the target interaction coordinate. The retained attraction pair is M089/M192 and the retained electrostatic pair is M029/M085. M029 and M085 are mutual nearest neighbors in the matching geometry space. Pair selection preceded the spatial interpretation.
 
 \subsection{Spatial insertion fields}
 
@@ -188,19 +186,33 @@ For the electrostatic pair,
 -\ln w_{\rm LJ}^{\mathrm{N_2}}(\mathbf r)
 \right].
 \end{equation}
-Visualization and local summaries were restricted to the union of the minimal voxel sets carrying 99.5\% of the insertion probability of the relevant fields. Local quantities were weighted by normalized insertion probability, preventing inaccessible framework-overlap voxels from dominating logarithmic averages. The spatial fields are localization diagnostics; the global Henry calculations remain the estimator for integrated selectivity increments.
+For each field, probability support was defined as the minimal voxel set containing 99.5\% of insertion-probability mass. Electrostatic summaries used the union of the four CO$_2$/N$_2$ LJ/full support masks. Each relative-density field was normalized separately and the voxel weight was proportional to the sum of the four normalized fields within this union. Two-dimensional maps were formed by probability-weighted averaging along $z$. Regions outside the common support are left white and are not interpreted as empty pore volume. The spatial fields are localization diagnostics; production Henry coefficients remain authoritative for the integrated selectivity increments.
 
 \subsection{Robustness analyses}
 
-The principal signs and the weak attractive--electrostatic association were recomputed after excluding the four WCA cases with $\mathrm{SE}(\ln S_{\rm WCA})>0.10$ and after removing the upper 1\% of each response separately. A preselected 15-MOF bridge additionally replaced supported linker/main-group UFF parameters with DREIDING while retaining UFF for cobalt; all other WCA definitions were preserved. This bridge was used only to test sensitivity of the repulsive-accessibility coordinate to that specified linker-side Lennard--Jones perturbation.
+The principal signs and the weak attractive--electrostatic association were recomputed after excluding the four WCA cases with $\mathrm{SE}(\ln S_{\rm WCA})>0.10$ and after removing the upper 1\% of each response separately. A preselected 15-MOF bridge additionally replaced supported linker/main-group UFF parameters with DREIDING while retaining UFF for cobalt; all other WCA definitions were preserved. This bridge tests only the sensitivity of the repulsive WCA coordinate to the specified linker-side Lennard--Jones perturbation.
 
 \section{Conclusions}
 
-Across the 238-MOF analysis set, repulsive accessibility alone favors N$_2$, Lennard--Jones attraction reverses this baseline toward CO$_2$ throughout the panel, and electrostatics supplies a further framework-dependent enhancement. The attractive and electrostatic increments are only weakly associated.
+The original physical question was whether CO$_2$/N$_2$ selectivity could be decomposed into distinct repulsive, attractive, and electrostatic routes. Across this 238-MOF panel, the answer is more ordered than that hypothesis anticipated. The repulsive WCA reference favors N$_2$ throughout, Lennard--Jones attraction creates CO$_2$ preference throughout, and electrostatics subsequently differentiates frameworks to varying degrees.
 
-Conventional pore geometry captures the repulsive and attractive coordinates strongly and predicts the final selectivity well, yet provides essentially no improvement in absolute electrostatic prediction error over a median baseline. The M029/M085 pair shows the consequence directly: two mutual nearest neighbors in geometry space develop a 1.860-unit difference in electrostatic selectivity, driven overwhelmingly by CO$_2$ and accompanied by markedly different local spatial responses.
+Conventional pore geometry captures the repulsive and attractive stages strongly but does not adequately explain framework-to-framework electrostatic variation. The M029/M085 pair makes that distinction concrete: two mutual nearest neighbors in geometry space have nearly identical repulsive selectivity but differ by 1.860 in their electrostatic selectivity increment, overwhelmingly because of the CO$_2$ response.
 
-Total selectivity is therefore a useful endpoint but an incomplete mechanistic descriptor. The nested reference potentials preserve the route by which a framework becomes selective and reveal when an apparently adequate structural representation predicts the endpoint without resolving the underlying interaction coordinate.
+Total selectivity is therefore an endpoint rather than a complete mechanistic description. In this panel, the physically useful picture is a sequential one:
+\[
+\boxed{
+\text{repulsive baseline}
+\rightarrow
+\text{attractive creation of CO$_2$ preference}
+\rightarrow
+\text{framework-specific electrostatic differentiation}
+}
+\]
+This hierarchy, rather than an ML representation or a screening rank by itself, is the central conclusion of the study.
+
+\section*{Data and code availability}
+
+Analysis tables, figure source data, final analysis scripts, simulation-protocol records, retained spatial fields, and file hashes are organized in the project repository and will be deposited in a public archival repository before submission. The repository DOI/URL will be inserted in the submitted version.
 
 \bibliographystyle{unsrt}
 \bibliography{references}

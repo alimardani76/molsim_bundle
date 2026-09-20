@@ -3,7 +3,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[margin=2cm]{geometry}
 \usepackage{microtype,booktabs,longtable,tabularx,array,amsmath,graphicx,float,caption,hyperref,siunitx}
-\graphicspath{{../figures/si/}{../figures/main/}}
+\graphicspath{{figures/si/}{figures/main/}}
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=teal,urlcolor=teal}
 
 \title{Supporting Information\\How CO$_2$/N$_2$ Selectivity Emerges in Metal--Organic Frameworks}
@@ -18,15 +18,36 @@
 
 The starting ARC--MOF panel contained 240 structures \cite{burner2023arcmof}. The common analysis population contains 238 MOFs with the complete WCA, LJ-only, and full CO$_2$/N$_2$ quantities required by the nested comparison.
 
-Full and LJ-only Henry calculations used RASPA3 version 3.0.29 \cite{ran2024raspa3,dubbeldam2016raspa} at 298~K with rigid frameworks. The framework Lennard--Jones parameters were taken from UFF \cite{rappe1992uff}; the cutoff was 12~\AA{}, Lorentz--Berthelot mixing was used, interactions were shifted at the cutoff, and tail corrections were disabled. Full calculations used Ewald electrostatics; LJ-only calculations set framework and guest pseudoatom charges to zero while retaining the same Lennard--Jones definitions.
+Full and LJ-only Henry calculations used RASPA3 version 3.0.29 \cite{ran2024raspa3,dubbeldam2016raspa} at 298~K with rigid frameworks. The framework Lennard--Jones parameters were taken from UFF \cite{rappe1992uff}; the cutoff was 12~\AA{}, Lorentz--Berthelot mixing was used, interactions were shifted at the cutoff, and tail corrections were disabled. Framework electrostatics used the ARC--MOF REPEAT partial charges stored with the structures. Full calculations used Ewald electrostatics; LJ-only calculations set framework and guest pseudoatom charges to zero while retaining the same Lennard--Jones definitions.
 
-The full calculation used 50,000 Widom cycles per seed and LJ-only used 10,000 cycles per seed. Three matched seeds were used by default, with adaptive extension for unresolved cases. Exact protocol and force-field files are retained in the publication repository.
+CO$_2$ used the rigid transferable model of Garc\'ia-S\'anchez et al. \cite{garciasanchez2009co2}; N$_2$ used the rigid model of Martin-Calvo et al. \cite{martincalvo2015gases}. The retained pseudoatom definitions are summarized below.
+
+\begin{table}[H]
+\centering
+\caption{Guest pseudoatom parameters used in the retained production force field. Lennard--Jones energies are reported as $\epsilon/k_B$. The massless N$_2$ center-of-mass site carries charge only.}
+\begin{tabular}{lrrrr}
+\toprule
+Site & $\epsilon/k_B$ (K) & $\sigma$ (\AA{}) & Charge ($e$) & Position along molecular axis (\AA{})\\
+\midrule
+CO$_2$: C & 29.933 & 2.745 & +0.6512 & 0\\
+CO$_2$: O & 85.671 & 3.017 & -0.3256 & $\pm 1.149$\\
+N$_2$: N & 38.298 & 3.306 & -0.4050 & $\pm 0.550$\\
+N$_2$: COM & -- & -- & +0.8100 & 0\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The full calculation used 50,000 Widom cycles per seed and LJ-only used 10,000 cycles per seed. The three default matched seeds were 58101, 58102, and 58103, with adaptive extension for unresolved cases. Exact protocol and force-field files are retained in the publication repository.
 
 The WCA reference retained the repulsive branch of each framework--guest Lennard--Jones pair \cite{weeks1971wca},
 \begin{equation}
 r_{c,ij}=2^{1/6}\sigma_{ij},
 \end{equation}
 with the potential shifted to zero at the cutoff.
+
+\section{Interpretation of the WCA coordinate}
+
+The WCA calculation is a force-field-defined repulsive reference that retains the short-range repulsive branch of each framework--guest Lennard--Jones interaction. It is not identical to an independent hard-geometric steric-accessibility or network-connectivity calculation. Accordingly, the manuscript uses ``repulsive WCA reference'' for this coordinate and reserves ``geometry'' for the independently tabulated pore descriptors used in the control analysis. The original project hypothesis considered steric, attractive, and electrostatic routes as potentially interchangeable; the observed population-level result instead supports a sequential repulsive-reference $\rightarrow$ attractive $\rightarrow$ electrostatic interpretation for the present CO$_2$/N$_2$ panel.
 
 \section{WCA sampling, pooling, and precision}
 
@@ -107,7 +128,7 @@ M029/M085 have standardized geometry distance 0.258 and are mutual nearest neigh
 
 Spatial insertion fields used a fixed 0.75~\AA{} grid and the validated fixed-position RASPA/RASPALIB evaluator. LJ-only fields used 2,048 orientations per voxel. Full electrostatic fields used 16,384 or 32,768 orientations. Targeted nested 16k$\rightarrow$32k$\rightarrow$64k checks at probability-important voxels gave maximum observed 16k$\rightarrow$32k changes of approximately 0.04\% for M029/CO$_2$, 0.01\% for M029/N$_2$, and 0.002\% for M085/N$_2$; subsequent 32k$\rightarrow$64k changes were smaller.
 
-Probability support was defined as the minimal voxel set containing 99.5\% of insertion probability mass. Local log-selectivity quantities were summarized only within the union of the relevant supports and were weighted by normalized insertion probability.
+For each field, probability support was defined as the minimal voxel set containing 99.5\% of its insertion-probability mass. Electrostatic local summaries used the union of the four relevant CO$_2$/N$_2$ LJ/full support masks. Each relative-density field was normalized separately, and the summary weight at a voxel was proportional to the sum of the four normalized fields within this union. Two-dimensional maps were formed by probability-weighted averaging along the $z$ direction. White regions in the maps lie outside the common support and should not be interpreted as empty pore volume.
 
 \begin{table}[H]
 \centering
@@ -129,7 +150,7 @@ Weighted IQR local $\delta_{\rm elec}$ & 0.614 & 2.019\\
 \begin{figure}[H]
 \centering
 \includegraphics[width=.95\linewidth]{figS1_electrostatic_per_gas.pdf}
-\caption{\textbf{Gas-specific probability-supported full-minus-LJ increments for M029 and M085.} The local fields support the global result that the large between-framework electrostatic-selectivity contrast is dominated by CO$_2$.}
+\caption{\textbf{Gas-specific probability-supported full-minus-LJ increments for M029 and M085.} Maps are probability-weighted $z$-projections; white regions lie outside the relevant 99.5\%-probability-support masks. The local fields support the global result that the large between-framework electrostatic-selectivity contrast is dominated by CO$_2$.}
 \label{fig:si_spatial_gas}
 \end{figure}
 
@@ -140,12 +161,12 @@ From the global Henry calculations, $\Delta\ln K_H^{\rm full-LJ}$ for CO$_2$ is 
 \begin{table}[H]
 \centering
 \caption{Changes in candidate ordering after each interaction stage. Rank 1 denotes the highest selectivity.}
-\begin{tabular}{lrrrr}
+\begin{tabular}{lrrrrr}
 \toprule
-Transition & Spearman $\rho$ & Median $|\Delta rank|$ & Max promotion & Max demotion\\
+Transition & Spearman $\rho$ & Median $|\Delta rank|$ & $n(|\Delta rank|\geq50)$ & Max promotion & Max demotion\\
 \midrule
-WCA $\rightarrow$ LJ-only & -0.751 & 102 & 234 & 226\\
-LJ-only $\rightarrow$ full & 0.905 & 9 & 175 & 55\\
+WCA $\rightarrow$ LJ-only & -0.751 & 102 & 183 & 234 & 226\\
+LJ-only $\rightarrow$ full & 0.905 & 9 & 12 & 175 & 55\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -179,7 +200,7 @@ N$_2$ & 15 & 0.0178 & 0.0507 & 1.000\\
 
 \section{Source data and reproducibility}
 
-The publication repository contains the 238-MOF mechanism table, source data for all final figures, the geometry-only prediction tables, retained M029/M085 spatial fields, WCA bridge results, simulation protocol, guest definitions, force-field definitions, final analysis scripts, and file hashes.
+The accompanying project repository contains the 238-MOF mechanism table, source data for all final figures, the geometry-only prediction tables, retained M029/M085 spatial fields, WCA bridge results, simulation protocol, guest definitions, force-field definitions, final analysis scripts, and file hashes. A public archival DOI/URL will be added before submission.
 
 \bibliographystyle{unsrt}
 \bibliography{references}
