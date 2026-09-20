@@ -1,0 +1,88 @@
+{
+  "status": "REVIEW",
+  "accepted_positions_upper": 6000,
+  "nested_lower_positions": 3000,
+  "pilot_aliases": [
+    "M001",
+    "M029",
+    "M050",
+    "M085",
+    "M120",
+    "M160",
+    "M200",
+    "M238"
+  ],
+  "descriptor_convergence": {
+    "probe_co2_median_z": {
+      "scale_upper": 0.12137928590995473,
+      "max_abs_standardized_change": 0.44777770338454964,
+      "passed": false
+    },
+    "probe_co2_q90_z": {
+      "scale_upper": 0.7272389808865476,
+      "max_abs_standardized_change": 0.13957530143032265,
+      "passed": false
+    },
+    "probe_co2_iqr_z": {
+      "scale_upper": 0.49385845728698935,
+      "max_abs_standardized_change": 0.11448048173640696,
+      "passed": false
+    },
+    "probe_co2_fraction_z_gt_1": {
+      "scale_upper": 0.11994865592583649,
+      "max_abs_standardized_change": 0.28972403633176164,
+      "passed": false
+    },
+    "probe_co2_median_orientation_iqr_z": {
+      "scale_upper": 0.2804843614310556,
+      "max_abs_standardized_change": 0.2896098728425324,
+      "passed": false
+    },
+    "probe_n2_median_z": {
+      "scale_upper": 0.005385063946371465,
+      "max_abs_standardized_change": 0.24704920787612905,
+      "passed": false
+    },
+    "probe_n2_q90_z": {
+      "scale_upper": 0.10064745651922938,
+      "max_abs_standardized_change": 0.282251455612253,
+      "passed": false
+    },
+    "probe_n2_iqr_z": {
+      "scale_upper": 0.029857354590135696,
+      "max_abs_standardized_change": 1.142917234788907,
+      "passed": false
+    },
+    "probe_n2_fraction_z_gt_1": {
+      "scale_upper": 0.0006948277744961215,
+      "max_abs_standardized_change": 1.0998140610415483,
+      "passed": false
+    },
+    "probe_n2_median_orientation_iqr_z": {
+      "scale_upper": 0.05228727060889934,
+      "max_abs_standardized_change": 0.40039462390390657,
+      "passed": false
+    },
+    "probe_co2_minus_n2_median_z": {
+      "scale_upper": 0.1169875339268565,
+      "max_abs_standardized_change": 0.47032685477210406,
+      "passed": false
+    },
+    "probe_co2_minus_n2_q90_z": {
+      "scale_upper": 0.6287999641943431,
+      "max_abs_standardized_change": 0.1648407996919851,
+      "passed": false
+    }
+  },
+  "cross_gas_ordering": {
+    "median_gap_spearman": 0.9761904761904763,
+    "q90_gap_spearman": 1.0,
+    "passed": true
+  },
+  "M029_M085_direction": {
+    "median_gap_M085_gt_M029": true,
+    "q90_gap_M085_gt_M029": true,
+    "passed": true
+  },
+  "allowed_next_action": "RERUN_PILOT_AT_10000_ONCE"
+}

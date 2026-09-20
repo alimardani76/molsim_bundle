@@ -25,10 +25,8 @@ import sys
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
 
+import csv
 import numpy as np
-import pandas as pd
-from scipy.special import logsumexp
-from scipy.stats import spearmanr
 
 ROOT = Path(__file__).resolve().parents[2]
 PROJECT = ROOT.parent
@@ -62,6 +60,33 @@ EXPECTED_PROBE_COLUMNS = [
     "probe_co2_minus_n2_median_z",
     "probe_co2_minus_n2_q90_z",
 ]
+
+def logsumexp(a, axis=1):
+    a = np.asarray(a, dtype=float)
+    m = np.max(a, axis=axis, keepdims=True)
+    out = m + np.log(np.sum(np.exp(a - m), axis=axis, keepdims=True))
+    return np.squeeze(out, axis=axis)
+
+def _rankdata(x):
+    x = np.asarray(x, dtype=float)
+    order = np.argsort(x, kind="mergesort")
+    ranks = np.empty(len(x), dtype=float)
+    i = 0
+    while i < len(x):
+        j = i + 1
+        while j < len(x) and x[order[j]] == x[order[i]]:
+            j += 1
+        rank = 0.5 * ((i + 1) + j)
+        ranks[order[i:j]] = rank
+        i = j
+    return ranks
+
+def spearman_rho(x, y):
+    rx = _rankdata(x)
+    ry = _rankdata(y)
+    if np.std(rx) == 0 or np.std(ry) == 0:
+        return float("nan")
+    return float(np.corrcoef(rx, ry)[0, 1])
 
 def sha256(path: Path) -> str:
     h = hashlib.sha256()
@@ -155,11 +180,52 @@ def descriptors_from_matrices(mats, n):
     return out, gas_summ
 
 def load_backend():
+    """
+    Load the frozen validated fixed-position backend without modifying it.
+
+    The retained backend originally hard-coded only the elements present in the
+    M029/M085 validation cases. Gate C spans all 238 MOFs, so this loader makes
+    one input-translation-only compatibility extension: the local element-to-
+    atomic-number table is expanded to the full periodic table before execution.
+    No force-field parameters, charges, geometry, Ewald settings, energies, or
+    RASPALIB calls are changed.
+    """
     if not BACKEND_FILE.exists():
         raise FileNotFoundError(f"Validated backend not found: {BACKEND_FILE}")
-    sys.path.insert(0, str(BACKEND_DIR))
-    from fixed_position_energy import FixedPositionEnergy
-    return FixedPositionEnergy
+
+    source = BACKEND_FILE.read_text(encoding="utf-8")
+
+    old = """        elements = {'H':1,'C':6,'N':7,'O':8,'Co':27,'Zn':30,'Cu':29,'Zr':40}
+"""
+    symbols = [
+        "H","He","Li","Be","B","C","N","O","F","Ne",
+        "Na","Mg","Al","Si","P","S","Cl","Ar","K","Ca",
+        "Sc","Ti","V","Cr","Mn","Fe","Co","Ni","Cu","Zn",
+        "Ga","Ge","As","Se","Br","Kr","Rb","Sr","Y","Zr",
+        "Nb","Mo","Tc","Ru","Rh","Pd","Ag","Cd","In","Sn",
+        "Sb","Te","I","Xe","Cs","Ba","La","Ce","Pr","Nd",
+        "Pm","Sm","Eu","Gd","Tb","Dy","Ho","Er","Tm","Yb",
+        "Lu","Hf","Ta","W","Re","Os","Ir","Pt","Au","Hg",
+        "Tl","Pb","Bi","Po","At","Rn","Fr","Ra","Ac","Th",
+        "Pa","U","Np","Pu","Am","Cm","Bk","Cf","Es","Fm",
+        "Md","No","Lr","Rf","Db","Sg","Bh","Hs","Mt","Ds",
+        "Rg","Cn","Nh","Fl","Mc","Lv","Ts","Og",
+    ]
+    mapping = {sym: i + 1 for i, sym in enumerate(symbols)}
+    new = "        elements = " + repr(mapping) + "\n"
+
+    if old not in source:
+        raise RuntimeError(
+            "Frozen backend element-map line changed unexpectedly; refusing to patch."
+        )
+    source = source.replace(old, new, 1)
+
+    ns = {
+        "__name__": "_gate_c_fixed_position_energy_compat",
+        "__file__": str(BACKEND_FILE),
+    }
+    exec(compile(source, str(BACKEND_FILE), "exec"), ns, ns)
+    return ns["FixedPositionEnergy"]
 
 def expected_backend_sha():
     rep = json.loads(PREFLIGHT.read_text(encoding="utf-8"))
@@ -282,20 +348,16 @@ def pilot_check(records, accepted):
     if [r["template_alias"] for r in records] != PILOT_ALIASES:
         raise RuntimeError("Pilot aliases/order changed.")
 
-    upper = pd.DataFrame([
-        {"template_alias": r["template_alias"], **r["descriptors_upper"]}
-        for r in records
-    ]).set_index("template_alias")
-    lower = pd.DataFrame([
-        {"template_alias": r["template_alias"], **r["descriptors_lower"]}
-        for r in records
-    ]).set_index("template_alias")
+    upper = {r["template_alias"]: r["descriptors_upper"] for r in records}
+    lower = {r["template_alias"]: r["descriptors_lower"] for r in records}
 
     standardized = {}
     all_desc_pass = True
     for c in EXPECTED_PROBE_COLUMNS:
-        scale = float(upper[c].std(ddof=0))
-        dif = np.abs(upper[c].to_numpy() - lower[c].to_numpy())
+        up = np.array([upper[a][c] for a in PILOT_ALIASES], dtype=float)
+        lo = np.array([lower[a][c] for a in PILOT_ALIASES], dtype=float)
+        scale = float(np.std(up, ddof=0))
+        dif = np.abs(up - lo)
         if scale < 1e-12:
             vals = dif
             pass_c = bool(np.max(dif) <= 1e-12)
@@ -309,27 +371,30 @@ def pilot_check(records, accepted):
         }
         all_desc_pass &= pass_c
 
-    rho_med = float(spearmanr(
-        lower["probe_co2_minus_n2_median_z"],
-        upper["probe_co2_minus_n2_median_z"]
-    ).statistic)
-    rho_q90 = float(spearmanr(
-        lower["probe_co2_minus_n2_q90_z"],
-        upper["probe_co2_minus_n2_q90_z"]
-    ).statistic)
+    rho_med = spearman_rho(
+        [lower[a]["probe_co2_minus_n2_median_z"] for a in PILOT_ALIASES],
+        [upper[a]["probe_co2_minus_n2_median_z"] for a in PILOT_ALIASES],
+    )
+    rho_q90 = spearman_rho(
+        [lower[a]["probe_co2_minus_n2_q90_z"] for a in PILOT_ALIASES],
+        [upper[a]["probe_co2_minus_n2_q90_z"] for a in PILOT_ALIASES],
+    )
 
     direction = {
         "median_gap_M085_gt_M029": bool(
-            upper.loc["M085", "probe_co2_minus_n2_median_z"]
-            > upper.loc["M029", "probe_co2_minus_n2_median_z"]
+            upper["M085"]["probe_co2_minus_n2_median_z"]
+            > upper["M029"]["probe_co2_minus_n2_median_z"]
         ),
         "q90_gap_M085_gt_M029": bool(
-            upper.loc["M085", "probe_co2_minus_n2_q90_z"]
-            > upper.loc["M029", "probe_co2_minus_n2_q90_z"]
+            upper["M085"]["probe_co2_minus_n2_q90_z"]
+            > upper["M029"]["probe_co2_minus_n2_q90_z"]
         ),
     }
 
-    ordering_pass = bool(np.isfinite(rho_med) and np.isfinite(rho_q90) and rho_med >= 0.90 and rho_q90 >= 0.90)
+    ordering_pass = bool(
+        np.isfinite(rho_med) and np.isfinite(rho_q90)
+        and rho_med >= 0.90 and rho_q90 >= 0.90
+    )
     direction_pass = all(direction.values())
     passed = bool(all_desc_pass and ordering_pass and direction_pass)
 
@@ -348,13 +413,23 @@ def pilot_check(records, accepted):
         "allowed_next_action": (
             "RUN_ALL"
             if passed else
-            ("RERUN_PILOT_AT_10000_ONCE" if accepted == DEFAULT_ACCEPTED else "CLOSE_GATE_C_AS_NON_SUPPORTING_NUMERICAL_PREFLIGHT")
+            ("RERUN_PILOT_AT_10000_ONCE"
+             if accepted == DEFAULT_ACCEPTED
+             else "CLOSE_GATE_C_AS_NON_SUPPORTING_NUMERICAL_PREFLIGHT")
         ),
     }
 
     p = DOCS / f"PI_GATE_C_PILOT_{accepted}.json"
     p.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
-    upper.reset_index().to_csv(OUT / f"pi_gate_c_pilot_descriptors_{accepted}.csv", index=False)
+
+    csv_path = OUT / f"pi_gate_c_pilot_descriptors_{accepted}.csv"
+    with csv_path.open("w", newline="", encoding="utf-8") as fh:
+        fields = ["template_alias"] + EXPECTED_PROBE_COLUMNS
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        for a in PILOT_ALIASES:
+            w.writerow({"template_alias": a, **upper[a]})
+
     print(json.dumps(report, indent=2))
     return passed, report
 
@@ -367,17 +442,26 @@ def build_final_table(records, accepted):
             "accepted_positions": accepted,
             "orientations": N_ORIENT,
             **r["descriptors_upper"],
-            "diagnostic_co2_effective_position_sample_size": r["aux_upper"]["CO2"]["effective_position_sample_size"],
-            "diagnostic_n2_effective_position_sample_size": r["aux_upper"]["N2"]["effective_position_sample_size"],
+            "diagnostic_co2_effective_position_sample_size":
+                r["aux_upper"]["CO2"]["effective_position_sample_size"],
+            "diagnostic_n2_effective_position_sample_size":
+                r["aux_upper"]["N2"]["effective_position_sample_size"],
         }
         rows.append(row)
-    out = pd.DataFrame(rows)
-    if len(out) != 238 or out["mof_id"].duplicated().any():
-        raise RuntimeError("Final probe table is not a unique 238-framework cohort.")
-    if len([c for c in out.columns if c.startswith("probe_")]) != 12:
+
+    if len(rows) != 238:
+        raise RuntimeError("Final probe table does not contain 238 frameworks.")
+    ids = [r["mof_id"] for r in rows]
+    if len(set(ids)) != len(ids):
+        raise RuntimeError("Final probe table contains duplicate mof_id values.")
+    if len([c for c in rows[0] if c.startswith("probe_")]) != 12:
         raise RuntimeError("Final probe feature count changed.")
+
     path = OUT / "pi_electrostatic_probe_descriptors.csv"
-    out.to_csv(path, index=False)
+    with path.open("w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=list(rows[0]))
+        w.writeheader()
+        w.writerows(rows)
 
     rep = {
         "status": "PASS",
@@ -389,8 +473,12 @@ def build_final_table(records, accepted):
         "backend_sha256": sha256(BACKEND_FILE),
         "seed": BASE_SEED,
         "output": str(path.relative_to(ROOT)),
-        "min_effective_position_sample_size_co2": float(out["diagnostic_co2_effective_position_sample_size"].min()),
-        "min_effective_position_sample_size_n2": float(out["diagnostic_n2_effective_position_sample_size"].min()),
+        "min_effective_position_sample_size_co2": float(min(
+            r["diagnostic_co2_effective_position_sample_size"] for r in rows
+        )),
+        "min_effective_position_sample_size_n2": float(min(
+            r["diagnostic_n2_effective_position_sample_size"] for r in rows
+        )),
     }
     (DOCS / "PI_GATE_C_PROBE_GENERATION_REPORT.json").write_text(
         json.dumps(rep, indent=2) + "\n", encoding="utf-8"
@@ -428,11 +516,15 @@ def main():
             "raspa_maps environment, for example: conda run -n raspa_maps python ..."
         ) from e
 
-    man = pd.read_csv(MANIFEST)
-    if len(man) != 238 or not man["status"].eq("MATCH").all():
+    with MANIFEST.open("r", newline="", encoding="utf-8") as fh:
+        manifest_rows = list(csv.DictReader(fh))
+    if len(manifest_rows) != 238 or not all(r["status"] == "MATCH" for r in manifest_rows):
         raise RuntimeError("Gate C template manifest is not the frozen 238/238 match.")
 
-    records = man[["mof_id", "template_alias"]].to_dict("records")
+    records = [
+        {"mof_id": r["mof_id"], "template_alias": r["template_alias"]}
+        for r in manifest_rows
+    ]
 
     if args.pilot:
         index = {r["template_alias"]: r for r in records}
