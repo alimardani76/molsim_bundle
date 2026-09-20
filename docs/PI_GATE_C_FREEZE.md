@@ -149,3 +149,16 @@ Gate C does not automatically open:
 Gates D and E remain closed unless the PI or a reviewer explicitly requests them.
 
 This rule exists to finish the PI premise rather than turn it into a new research program.
+
+## Closure outcome
+
+Gate C is **CLOSED AS NON-SUPPORTING AT NUMERICAL PREFLIGHT**.
+
+The frozen 3,000 -> 6,000 accepted-position check failed the all-descriptor convergence criterion, so the one permitted retry at 10,000 positions was run. The 6,000 -> 10,000 comparison still failed the pre-specified requirement that every primary descriptor have absolute standardized change <= 0.10. Only the CO2 favorable-tail descriptor passed that threshold.
+
+Two directional checks remained stable and are recorded only as diagnostics:
+- CO2-N2 median-gap ordering: Spearman rho = 0.976 between 6,000 and 10,000 positions;
+- CO2-N2 favorable-tail-gap ordering: Spearman rho = 0.976;
+- M085 > M029 for both median-gap and favorable-tail-gap coordinates.
+
+Per the frozen hard-stop rule, no 238-framework production probe campaign, downstream probe-vs-geometry model comparison, descriptor tuning, larger sample count, or replacement probe definition is allowed. The existing manuscript claim remains unchanged and the project moves to paper closure.
