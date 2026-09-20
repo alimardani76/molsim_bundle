@@ -1,0 +1,19 @@
+# Publication cleanup closeout
+
+Branch: publication-cleanup
+
+## TeX toolchain
+- latexmk: C:\Program Files\MiKTeX\miktex\bin\x64\latexmk.EXE
+- pdflatex: C:\Program Files\MiKTeX\miktex\bin\x64\pdflatex.EXE
+- bibtex: C:\Program Files\MiKTeX\miktex\bin\x64\bibtex.EXE
+
+## main.tex
+- PDF exists: False
+- latexmk return code: 1
+- Relevant LaTeX errors: none detected in available log
+
+## si.tex
+- PDF exists: False
+- latexmk return code: 1
+- Relevant LaTeX errors: none detected in available log
+
