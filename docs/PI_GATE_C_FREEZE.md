@@ -49,6 +49,22 @@ For each framework and each gas (CO2 and N2):
 
 Random seed: 20260920.
 
+## Frozen implementation clarification
+
+Before any Gate C result is generated, the orientation-level definition is fixed as follows.
+
+For position r with the same 16 molecular axes in LJ-only and full modes,
+
+z_pose(r,Omega) = log w_full(r,Omega) - log w_LJ(r,Omega).
+
+The primary position-level electrostatic coordinate is the orientation-integrated local increment
+
+z_eff(r) = log mean_Omega[w_full(r,Omega)] - log mean_Omega[w_LJ(r,Omega)].
+
+This is the same full-minus-LJ log-weight construction used in the retained spatial analysis, now sampled sparsely across all 238 frameworks. Position weights are proportional to mean_Omega[w_LJ(r,Omega)]. The orientation-sensitivity descriptor is the within-position IQR of z_pose, summarized across positions with the same LJ position weights.
+
+No result was inspected before fixing this implementation.
+
 ## Frozen probe descriptors
 
 For each gas:
