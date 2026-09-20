@@ -170,7 +170,7 @@ If opened, the calculation must:
 - compare geometry-only vs electrostatic-probe-only vs combined features on identical splits;
 - avoid simplistic maximum-charge or mean-charge descriptors as the main result.
 
-**Decision:** CONDITIONAL — NOT STARTED.
+**Decision:** CLOSED — numerical preflight failed after the single permitted 10,000-position retry. Retained as a non-supporting SI diagnostic; no 238-framework production run or downstream probe-model comparison.
 
 ---
 
@@ -188,7 +188,7 @@ The PI roadmap asks for a new 8-framework alternative-LJ mechanism bridge.
 
 **Rule:** if run, select the panel before seeing alternative-force-field results and preserve all non-LJ choices.
 
-**Decision:** CONDITIONAL. Do not run until Gates A-C show that the expanded story is worth defending.
+**Decision:** CLOSED by the Gate C hard-stop. Do not run unless explicitly requested by the PI or a reviewer.
 
 ---
 
@@ -198,7 +198,7 @@ The roadmap treats this as the final generalization experiment, not part of the 
 
 The current Story Charter excludes CO2/CH4 transfer from the frozen claim set.
 
-**Decision:** DEFER. Reopen only after the integrated A-D story is complete and only if generalization is needed for target-journal positioning.
+**Decision:** CLOSED by the Gate C hard-stop. Reopen only if explicitly requested by the PI or a reviewer.
 
 ---
 
