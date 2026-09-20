@@ -1,0 +1,1378 @@
+{
+  "MixingRule": "Lorentz-Berthelot",
+  "TruncationMethod": "shifted",
+  "TailCorrections": false,
+  "CutOffVDW": 12.0,
+  "PseudoAtoms": [
+    {
+      "name": "Co1",
+      "framework": true,
+      "print_to_output": true,
+      "element": "Co",
+      "print_as": "Co",
+      "mass": 58.933194,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "Co2",
+      "framework": true,
+      "print_to_output": true,
+      "element": "Co",
+      "print_as": "Co",
+      "mass": 58.933194,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "O1",
+      "framework": true,
+      "print_to_output": true,
+      "element": "O",
+      "print_as": "O",
+      "mass": 15.9994,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "O2",
+      "framework": true,
+      "print_to_output": true,
+      "element": "O",
+      "print_as": "O",
+      "mass": 15.9994,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "O3",
+      "framework": true,
+      "print_to_output": true,
+      "element": "O",
+      "print_as": "O",
+      "mass": 15.9994,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "O4",
+      "framework": true,
+      "print_to_output": true,
+      "element": "O",
+      "print_as": "O",
+      "mass": 15.9994,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "O5",
+      "framework": true,
+      "print_to_output": true,
+      "element": "O",
+      "print_as": "O",
+      "mass": 15.9994,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "O6",
+      "framework": true,
+      "print_to_output": true,
+      "element": "O",
+      "print_as": "O",
+      "mass": 15.9994,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "O7",
+      "framework": true,
+      "print_to_output": true,
+      "element": "O",
+      "print_as": "O",
+      "mass": 15.9994,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "O8",
+      "framework": true,
+      "print_to_output": true,
+      "element": "O",
+      "print_as": "O",
+      "mass": 15.9994,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "C1",
+      "framework": true,
+      "print_to_output": true,
+      "element": "C",
+      "print_as": "C",
+      "mass": 12.0107,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "C2",
+      "framework": true,
+      "print_to_output": true,
+      "element": "C",
+      "print_as": "C",
+      "mass": 12.0107,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "C3",
+      "framework": true,
+      "print_to_output": true,
+      "element": "C",
+      "print_as": "C",
+      "mass": 12.0107,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "C4",
+      "framework": true,
+      "print_to_output": true,
+      "element": "C",
+      "print_as": "C",
+      "mass": 12.0107,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "C5",
+      "framework": true,
+      "print_to_output": true,
+      "element": "C",
+      "print_as": "C",
+      "mass": 12.0107,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "C6",
+      "framework": true,
+      "print_to_output": true,
+      "element": "C",
+      "print_as": "C",
+      "mass": 12.0107,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "C7",
+      "framework": true,
+      "print_to_output": true,
+      "element": "C",
+      "print_as": "C",
+      "mass": 12.0107,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "C8",
+      "framework": true,
+      "print_to_output": true,
+      "element": "C",
+      "print_as": "C",
+      "mass": 12.0107,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "N1",
+      "framework": true,
+      "print_to_output": true,
+      "element": "N",
+      "print_as": "N",
+      "mass": 14.0067,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "N2",
+      "framework": true,
+      "print_to_output": true,
+      "element": "N",
+      "print_as": "N",
+      "mass": 14.0067,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "C9",
+      "framework": true,
+      "print_to_output": true,
+      "element": "C",
+      "print_as": "C",
+      "mass": 12.0107,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "C10",
+      "framework": true,
+      "print_to_output": true,
+      "element": "C",
+      "print_as": "C",
+      "mass": 12.0107,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "C11",
+      "framework": true,
+      "print_to_output": true,
+      "element": "C",
+      "print_as": "C",
+      "mass": 12.0107,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "C12",
+      "framework": true,
+      "print_to_output": true,
+      "element": "C",
+      "print_as": "C",
+      "mass": 12.0107,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "C13",
+      "framework": true,
+      "print_to_output": true,
+      "element": "C",
+      "print_as": "C",
+      "mass": 12.0107,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "C14",
+      "framework": true,
+      "print_to_output": true,
+      "element": "C",
+      "print_as": "C",
+      "mass": 12.0107,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "C15",
+      "framework": true,
+      "print_to_output": true,
+      "element": "C",
+      "print_as": "C",
+      "mass": 12.0107,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "C16",
+      "framework": true,
+      "print_to_output": true,
+      "element": "C",
+      "print_as": "C",
+      "mass": 12.0107,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "C17",
+      "framework": true,
+      "print_to_output": true,
+      "element": "C",
+      "print_as": "C",
+      "mass": 12.0107,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "C18",
+      "framework": true,
+      "print_to_output": true,
+      "element": "C",
+      "print_as": "C",
+      "mass": 12.0107,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "H1",
+      "framework": true,
+      "print_to_output": true,
+      "element": "H",
+      "print_as": "H",
+      "mass": 1.00794,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "H2",
+      "framework": true,
+      "print_to_output": true,
+      "element": "H",
+      "print_as": "H",
+      "mass": 1.00794,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "H3",
+      "framework": true,
+      "print_to_output": true,
+      "element": "H",
+      "print_as": "H",
+      "mass": 1.00794,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "H4",
+      "framework": true,
+      "print_to_output": true,
+      "element": "H",
+      "print_as": "H",
+      "mass": 1.00794,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "H5",
+      "framework": true,
+      "print_to_output": true,
+      "element": "H",
+      "print_as": "H",
+      "mass": 1.00794,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "H6",
+      "framework": true,
+      "print_to_output": true,
+      "element": "H",
+      "print_as": "H",
+      "mass": 1.00794,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "H7",
+      "framework": true,
+      "print_to_output": true,
+      "element": "H",
+      "print_as": "H",
+      "mass": 1.00794,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "H8",
+      "framework": true,
+      "print_to_output": true,
+      "element": "H",
+      "print_as": "H",
+      "mass": 1.00794,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "H9",
+      "framework": true,
+      "print_to_output": true,
+      "element": "H",
+      "print_as": "H",
+      "mass": 1.00794,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "H10",
+      "framework": true,
+      "print_to_output": true,
+      "element": "H",
+      "print_as": "H",
+      "mass": 1.00794,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "H11",
+      "framework": true,
+      "print_to_output": true,
+      "element": "H",
+      "print_as": "H",
+      "mass": 1.00794,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "H12",
+      "framework": true,
+      "print_to_output": true,
+      "element": "H",
+      "print_as": "H",
+      "mass": 1.00794,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "C19",
+      "framework": true,
+      "print_to_output": true,
+      "element": "C",
+      "print_as": "C",
+      "mass": 12.0107,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "C20",
+      "framework": true,
+      "print_to_output": true,
+      "element": "C",
+      "print_as": "C",
+      "mass": 12.0107,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "C21",
+      "framework": true,
+      "print_to_output": true,
+      "element": "C",
+      "print_as": "C",
+      "mass": 12.0107,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "C22",
+      "framework": true,
+      "print_to_output": true,
+      "element": "C",
+      "print_as": "C",
+      "mass": 12.0107,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "C23",
+      "framework": true,
+      "print_to_output": true,
+      "element": "C",
+      "print_as": "C",
+      "mass": 12.0107,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "C24",
+      "framework": true,
+      "print_to_output": true,
+      "element": "C",
+      "print_as": "C",
+      "mass": 12.0107,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "C25",
+      "framework": true,
+      "print_to_output": true,
+      "element": "C",
+      "print_as": "C",
+      "mass": 12.0107,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "C26",
+      "framework": true,
+      "print_to_output": true,
+      "element": "C",
+      "print_as": "C",
+      "mass": 12.0107,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "C27",
+      "framework": true,
+      "print_to_output": true,
+      "element": "C",
+      "print_as": "C",
+      "mass": 12.0107,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "C28",
+      "framework": true,
+      "print_to_output": true,
+      "element": "C",
+      "print_as": "C",
+      "mass": 12.0107,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "C29",
+      "framework": true,
+      "print_to_output": true,
+      "element": "C",
+      "print_as": "C",
+      "mass": 12.0107,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "C30",
+      "framework": true,
+      "print_to_output": true,
+      "element": "C",
+      "print_as": "C",
+      "mass": 12.0107,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "C31",
+      "framework": true,
+      "print_to_output": true,
+      "element": "C",
+      "print_as": "C",
+      "mass": 12.0107,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "C32",
+      "framework": true,
+      "print_to_output": true,
+      "element": "C",
+      "print_as": "C",
+      "mass": 12.0107,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "C33",
+      "framework": true,
+      "print_to_output": true,
+      "element": "C",
+      "print_as": "C",
+      "mass": 12.0107,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "C34",
+      "framework": true,
+      "print_to_output": true,
+      "element": "C",
+      "print_as": "C",
+      "mass": 12.0107,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "H13",
+      "framework": true,
+      "print_to_output": true,
+      "element": "H",
+      "print_as": "H",
+      "mass": 1.00794,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "H14",
+      "framework": true,
+      "print_to_output": true,
+      "element": "H",
+      "print_as": "H",
+      "mass": 1.00794,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "H15",
+      "framework": true,
+      "print_to_output": true,
+      "element": "H",
+      "print_as": "H",
+      "mass": 1.00794,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "H16",
+      "framework": true,
+      "print_to_output": true,
+      "element": "H",
+      "print_as": "H",
+      "mass": 1.00794,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "H17",
+      "framework": true,
+      "print_to_output": true,
+      "element": "H",
+      "print_as": "H",
+      "mass": 1.00794,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "H18",
+      "framework": true,
+      "print_to_output": true,
+      "element": "H",
+      "print_as": "H",
+      "mass": 1.00794,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "H19",
+      "framework": true,
+      "print_to_output": true,
+      "element": "H",
+      "print_as": "H",
+      "mass": 1.00794,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "H20",
+      "framework": true,
+      "print_to_output": true,
+      "element": "H",
+      "print_as": "H",
+      "mass": 1.00794,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "H21",
+      "framework": true,
+      "print_to_output": true,
+      "element": "H",
+      "print_as": "H",
+      "mass": 1.00794,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "H22",
+      "framework": true,
+      "print_to_output": true,
+      "element": "H",
+      "print_as": "H",
+      "mass": 1.00794,
+      "charge": 0.0,
+      "source": "ARC-MOF REPEAT + frozen UFF registry"
+    },
+    {
+      "name": "C_co2",
+      "framework": false,
+      "print_to_output": true,
+      "element": "C",
+      "print_as": "C",
+      "mass": 12.0107,
+      "charge": 0.0,
+      "source": "frozen guest model"
+    },
+    {
+      "name": "O_co2",
+      "framework": false,
+      "print_to_output": true,
+      "element": "O",
+      "print_as": "O",
+      "mass": 15.9994,
+      "charge": 0.0,
+      "source": "frozen guest model"
+    },
+    {
+      "name": "N_n2",
+      "framework": false,
+      "print_to_output": true,
+      "element": "N",
+      "print_as": "N",
+      "mass": 14.00674,
+      "charge": 0.0,
+      "source": "frozen guest model"
+    },
+    {
+      "name": "N_com",
+      "framework": false,
+      "print_to_output": false,
+      "element": "N",
+      "print_as": "-",
+      "mass": 0.0,
+      "charge": 0.0,
+      "source": "frozen guest model"
+    }
+  ],
+  "SelfInteractions": [
+    {
+      "name": "Co1",
+      "type": "lennard-jones",
+      "parameters": [
+        7.045073469,
+        2.5586611184990544
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "Co2",
+      "type": "lennard-jones",
+      "parameters": [
+        7.045073469,
+        2.5586611184990544
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "O1",
+      "type": "lennard-jones",
+      "parameters": [
+        30.19317201,
+        3.1181455134911875
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "O2",
+      "type": "lennard-jones",
+      "parameters": [
+        30.19317201,
+        3.1181455134911875
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "O3",
+      "type": "lennard-jones",
+      "parameters": [
+        30.19317201,
+        3.1181455134911875
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "O4",
+      "type": "lennard-jones",
+      "parameters": [
+        30.19317201,
+        3.1181455134911875
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "O5",
+      "type": "lennard-jones",
+      "parameters": [
+        30.19317201,
+        3.1181455134911875
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "O6",
+      "type": "lennard-jones",
+      "parameters": [
+        30.19317201,
+        3.1181455134911875
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "O7",
+      "type": "lennard-jones",
+      "parameters": [
+        30.19317201,
+        3.1181455134911875
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "O8",
+      "type": "lennard-jones",
+      "parameters": [
+        30.19317201,
+        3.1181455134911875
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "C1",
+      "type": "lennard-jones",
+      "parameters": [
+        52.8380510175,
+        3.4308509635584463
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "C2",
+      "type": "lennard-jones",
+      "parameters": [
+        52.8380510175,
+        3.4308509635584463
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "C3",
+      "type": "lennard-jones",
+      "parameters": [
+        52.8380510175,
+        3.4308509635584463
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "C4",
+      "type": "lennard-jones",
+      "parameters": [
+        52.8380510175,
+        3.4308509635584463
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "C5",
+      "type": "lennard-jones",
+      "parameters": [
+        52.8380510175,
+        3.4308509635584463
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "C6",
+      "type": "lennard-jones",
+      "parameters": [
+        52.8380510175,
+        3.4308509635584463
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "C7",
+      "type": "lennard-jones",
+      "parameters": [
+        52.8380510175,
+        3.4308509635584463
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "C8",
+      "type": "lennard-jones",
+      "parameters": [
+        52.8380510175,
+        3.4308509635584463
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "N1",
+      "type": "lennard-jones",
+      "parameters": [
+        34.7221478115,
+        3.260689308393642
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "N2",
+      "type": "lennard-jones",
+      "parameters": [
+        34.7221478115,
+        3.260689308393642
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "C9",
+      "type": "lennard-jones",
+      "parameters": [
+        52.8380510175,
+        3.4308509635584463
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "C10",
+      "type": "lennard-jones",
+      "parameters": [
+        52.8380510175,
+        3.4308509635584463
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "C11",
+      "type": "lennard-jones",
+      "parameters": [
+        52.8380510175,
+        3.4308509635584463
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "C12",
+      "type": "lennard-jones",
+      "parameters": [
+        52.8380510175,
+        3.4308509635584463
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "C13",
+      "type": "lennard-jones",
+      "parameters": [
+        52.8380510175,
+        3.4308509635584463
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "C14",
+      "type": "lennard-jones",
+      "parameters": [
+        52.8380510175,
+        3.4308509635584463
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "C15",
+      "type": "lennard-jones",
+      "parameters": [
+        52.8380510175,
+        3.4308509635584463
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "C16",
+      "type": "lennard-jones",
+      "parameters": [
+        52.8380510175,
+        3.4308509635584463
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "C17",
+      "type": "lennard-jones",
+      "parameters": [
+        52.8380510175,
+        3.4308509635584463
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "C18",
+      "type": "lennard-jones",
+      "parameters": [
+        52.8380510175,
+        3.4308509635584463
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "H1",
+      "type": "lennard-jones",
+      "parameters": [
+        22.141659474,
+        2.5711337005530197
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "H2",
+      "type": "lennard-jones",
+      "parameters": [
+        22.141659474,
+        2.5711337005530197
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "H3",
+      "type": "lennard-jones",
+      "parameters": [
+        22.141659474,
+        2.5711337005530197
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "H4",
+      "type": "lennard-jones",
+      "parameters": [
+        22.141659474,
+        2.5711337005530197
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "H5",
+      "type": "lennard-jones",
+      "parameters": [
+        22.141659474,
+        2.5711337005530197
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "H6",
+      "type": "lennard-jones",
+      "parameters": [
+        22.141659474,
+        2.5711337005530197
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "H7",
+      "type": "lennard-jones",
+      "parameters": [
+        22.141659474,
+        2.5711337005530197
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "H8",
+      "type": "lennard-jones",
+      "parameters": [
+        22.141659474,
+        2.5711337005530197
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "H9",
+      "type": "lennard-jones",
+      "parameters": [
+        22.141659474,
+        2.5711337005530197
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "H10",
+      "type": "lennard-jones",
+      "parameters": [
+        22.141659474,
+        2.5711337005530197
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "H11",
+      "type": "lennard-jones",
+      "parameters": [
+        22.141659474,
+        2.5711337005530197
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "H12",
+      "type": "lennard-jones",
+      "parameters": [
+        22.141659474,
+        2.5711337005530197
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "C19",
+      "type": "lennard-jones",
+      "parameters": [
+        52.8380510175,
+        3.4308509635584463
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "C20",
+      "type": "lennard-jones",
+      "parameters": [
+        52.8380510175,
+        3.4308509635584463
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "C21",
+      "type": "lennard-jones",
+      "parameters": [
+        52.8380510175,
+        3.4308509635584463
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "C22",
+      "type": "lennard-jones",
+      "parameters": [
+        52.8380510175,
+        3.4308509635584463
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "C23",
+      "type": "lennard-jones",
+      "parameters": [
+        52.8380510175,
+        3.4308509635584463
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "C24",
+      "type": "lennard-jones",
+      "parameters": [
+        52.8380510175,
+        3.4308509635584463
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "C25",
+      "type": "lennard-jones",
+      "parameters": [
+        52.8380510175,
+        3.4308509635584463
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "C26",
+      "type": "lennard-jones",
+      "parameters": [
+        52.8380510175,
+        3.4308509635584463
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "C27",
+      "type": "lennard-jones",
+      "parameters": [
+        52.8380510175,
+        3.4308509635584463
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "C28",
+      "type": "lennard-jones",
+      "parameters": [
+        52.8380510175,
+        3.4308509635584463
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "C29",
+      "type": "lennard-jones",
+      "parameters": [
+        52.8380510175,
+        3.4308509635584463
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "C30",
+      "type": "lennard-jones",
+      "parameters": [
+        52.8380510175,
+        3.4308509635584463
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "C31",
+      "type": "lennard-jones",
+      "parameters": [
+        52.8380510175,
+        3.4308509635584463
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "C32",
+      "type": "lennard-jones",
+      "parameters": [
+        52.8380510175,
+        3.4308509635584463
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "C33",
+      "type": "lennard-jones",
+      "parameters": [
+        52.8380510175,
+        3.4308509635584463
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "C34",
+      "type": "lennard-jones",
+      "parameters": [
+        52.8380510175,
+        3.4308509635584463
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "H13",
+      "type": "lennard-jones",
+      "parameters": [
+        22.141659474,
+        2.5711337005530197
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "H14",
+      "type": "lennard-jones",
+      "parameters": [
+        22.141659474,
+        2.5711337005530197
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "H15",
+      "type": "lennard-jones",
+      "parameters": [
+        22.141659474,
+        2.5711337005530197
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "H16",
+      "type": "lennard-jones",
+      "parameters": [
+        22.141659474,
+        2.5711337005530197
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "H17",
+      "type": "lennard-jones",
+      "parameters": [
+        22.141659474,
+        2.5711337005530197
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "H18",
+      "type": "lennard-jones",
+      "parameters": [
+        22.141659474,
+        2.5711337005530197
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "H19",
+      "type": "lennard-jones",
+      "parameters": [
+        22.141659474,
+        2.5711337005530197
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "H20",
+      "type": "lennard-jones",
+      "parameters": [
+        22.141659474,
+        2.5711337005530197
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "H21",
+      "type": "lennard-jones",
+      "parameters": [
+        22.141659474,
+        2.5711337005530197
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "H22",
+      "type": "lennard-jones",
+      "parameters": [
+        22.141659474,
+        2.5711337005530197
+      ],
+      "source": "frozen UFF registry"
+    },
+    {
+      "name": "C_co2",
+      "type": "lennard-jones",
+      "parameters": [
+        29.933,
+        2.745
+      ],
+      "source": "frozen guest model"
+    },
+    {
+      "name": "O_co2",
+      "type": "lennard-jones",
+      "parameters": [
+        85.671,
+        3.017
+      ],
+      "source": "frozen guest model"
+    },
+    {
+      "name": "N_n2",
+      "type": "lennard-jones",
+      "parameters": [
+        38.298,
+        3.306
+      ],
+      "source": "frozen guest model"
+    },
+    {
+      "name": "N_com",
+      "type": "none",
+      "parameters": [
+        0.0,
+        1.0
+      ],
+      "source": "frozen guest model"
+    }
+  ]
+}

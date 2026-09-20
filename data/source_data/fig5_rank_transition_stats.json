@@ -1,0 +1,12 @@
+{
+  "rho_wca_lj": -0.7508597634276422,
+  "rho_lj_full": 0.9050550573494586,
+  "median_abs_attr_shift": 102.0,
+  "median_abs_elec_shift": 9.0,
+  "max_attr_promotion": 234,
+  "max_attr_demotion": 226,
+  "max_elec_promotion": 175,
+  "max_elec_demotion": 55,
+  "n_abs_attr_shift_ge_50": 183,
+  "n_abs_elec_shift_ge_50": 12
+}

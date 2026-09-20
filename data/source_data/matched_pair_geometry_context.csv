@@ -1,0 +1,3 @@
+pair_type,mof_a,mof_b,mof_id_a,mof_id_b,geometry_distance_standardized_9d,neighbor_rank_b_from_a,neighbor_rank_a_from_b,geometry_features
+attraction,M089,M192,DB0-m15_o11_o75_f0_fsc,DB0-m15_o14_o77_f0_fsc,0.19917041683960623,1,3,geom_df;geom_di;geom_dif;geom_density;geom_asa;geom_avaf;geom_navaf;geom_poavaf;geom_npoavaf
+electrostatic,M029,M085,DB0-m15_o100_o150_f0_fsc,DB0-m15_o11_o30_jea,0.25752925524933845,1,1,geom_df;geom_di;geom_dif;geom_density;geom_asa;geom_avaf;geom_navaf;geom_poavaf;geom_npoavaf

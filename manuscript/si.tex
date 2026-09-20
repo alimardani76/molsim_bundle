@@ -6,7 +6,7 @@
 \graphicspath{{../figures/si/}{../figures/main/}}
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=teal,urlcolor=teal}
 
-\title{Supporting Information\\What Makes a MOF Selective? From Repulsive Baselines to Attractive and Electrostatic CO$_2$/N$_2$ Recognition}
+\title{Supporting Information\\How CO$_2$/N$_2$ Selectivity Emerges in Metal--Organic Frameworks}
 \author{Author list to be finalized}
 \date{}
 
@@ -14,17 +14,15 @@
 \maketitle
 \tableofcontents
 
-\section{Panel definition and evidence scope}
+\section{Analysis population and simulation definitions}
 
-The starting ARC--MOF panel contained 240 structures. The authoritative common population contains 238 MOFs with the required WCA, LJ-only, and full CO$_2$/N$_2$ quantities. All population-level mechanism statistics in the manuscript refer to these 238 structures.
+The starting ARC--MOF panel contained 240 structures \cite{burner2023arcmof}. The common analysis population contains 238 MOFs with the complete WCA, LJ-only, and full CO$_2$/N$_2$ quantities required by the nested comparison.
 
-The final evidence set includes the nested mechanism table, valid precision and upper-tail exclusion tests, leakage-free geometry analysis, frozen matched pairs, probability-supported electrostatic spatial fields, ranking trajectories, and the bounded 15-MOF WCA force-field bridge. Exploratory analyses that were invalid, unrecoverable, or outside the final claim scope are not used as scientific evidence and are listed in the repository exclusion ledger rather than reproduced here.
+Full and LJ-only Henry calculations used RASPA3 version 3.0.29 \cite{ran2024raspa3,dubbeldam2016raspa} at 298~K with rigid frameworks. The framework Lennard--Jones parameters were taken from UFF \cite{rappe1992uff}; the cutoff was 12~\AA{}, Lorentz--Berthelot mixing was used, interactions were shifted at the cutoff, and tail corrections were disabled. Full calculations used Ewald electrostatics; LJ-only calculations set framework and guest pseudoatom charges to zero while retaining the same Lennard--Jones definitions.
 
-\section{Simulation definitions}
+The full calculation used 50,000 Widom cycles per seed and LJ-only used 10,000 cycles per seed. Three matched seeds were used by default, with adaptive extension for unresolved cases. Exact protocol and force-field files are retained in the publication repository.
 
-Full and LJ-only Henry calculations used RASPA3 at 298~K with rigid frameworks. The van der Waals cutoff was 12~\AA{}, Lorentz--Berthelot mixing was used, and tail corrections were disabled. Full calculations used Ewald electrostatics; LJ-only calculations set framework and guest pseudoatom charges to zero while preserving all Lennard--Jones definitions.
-
-The WCA reference retained the repulsive branch of each framework--guest Lennard--Jones pair,
+The WCA reference retained the repulsive branch of each framework--guest Lennard--Jones pair \cite{weeks1971wca},
 \begin{equation}
 r_{c,ij}=2^{1/6}\sigma_{ij},
 \end{equation}
@@ -36,15 +34,15 @@ The final WCA archive contains 2,052 jobs. Independent equal-length seeds were p
 \begin{equation}
 B_k=\exp[-\mu_k^{\rm ex}/(RT)],
 \end{equation}
-followed by averaging in Boltzmann-factor space and conversion through $\ln\bar B$. The final population contains 178 MOFs with three seeds per gas, 38 with six, three with nine, and 19 with twelve.
+followed by averaging in Boltzmann-factor space and conversion through $\ln\bar B$. The population contains 178 MOFs with three seeds per gas, 38 with six, three with nine, and 19 with twelve.
 
-Four frameworks retained $\mathrm{SE}(\ln S_{\rm WCA})>0.10$. Excluding them did not change any principal qualitative conclusion.
+Four frameworks retained $\mathrm{SE}(\ln S_{\rm WCA})>0.10$. Excluding them does not change the sign or interpretation of the population-level conclusions.
 
-\section{Exclusion robustness}
+\section{Exclusion sensitivity}
 
 \begin{table}[H]
 \centering
-\caption{Sensitivity of the principal mechanism summaries to predefined exclusions.}
+\caption{Sensitivity of the mechanism summaries to predefined exclusions.}
 \begin{tabular}{lrrrrr}
 \toprule
 Population & $n$ & med. $\ln S_{\rm WCA}$ & med. $\Delta\ln S_{\rm attr}$ & med. $\Delta\ln S_{\rm elec}$ & $\rho_{\rm attr,elec}$\\
@@ -59,11 +57,11 @@ Exclude top 1\% full selectivity & 235 & -0.203 & 2.510 & 0.308 & -0.117\\
 \end{tabular}
 \end{table}
 
-In every listed population the WCA-positive fraction remained zero, while the attractive- and electrostatic-positive fractions remained one.
+In every listed population, the WCA-positive fraction remains zero while the attractive- and electrostatic-positive fractions remain one.
 
-\section{Leakage-free geometry models}
+\section{Geometry-only models}
 
-The final information-content analysis used 14 presimulation geometry descriptors. ExtraTrees regressors contained 500 trees, minimum leaf size three, and maximum-feature fraction 0.7. Five-fold shuffled cross-validation used random seed 20260918.
+The final information-content analysis used 14 pre-simulation geometry descriptors. ExtraTrees regressors contained 500 trees, minimum leaf size three, and maximum-feature fraction 0.7. Five-fold shuffled cross-validation used random seed 20260918.
 
 \begin{table}[H]
 \centering
@@ -80,13 +78,15 @@ $\ln S_{\rm full}$ & 0.845 & 0.189 & 0.501\\
 \end{tabular}
 \end{table}
 
-Target-derived adsorption quantities, identifiers, filenames, cluster labels, and other leakage-prone columns were excluded before fitting. The complete feature manifest and prediction table are provided as source data.
+Target-derived adsorption quantities, identifiers, filenames, cluster labels, and other variables capable of encoding the target were excluded before fitting. The complete descriptor manifest and out-of-fold prediction table are provided as source data.
 
-\section{Matched-pair values}
+\section{Geometry-matched pairs}
+
+Pairs were selected from the closest 2\% of all pairs in the standardized nine-descriptor geometry space and ranked by contrast in the target mechanism coordinate.
 
 \begin{table}[H]
 \centering
-\caption{Frozen geometry-matched case studies.}
+\caption{Geometry-matched case studies.}
 \begin{tabular}{lrrrr}
 \toprule
 MOF & $\ln S_{\rm WCA}$ & $\Delta\ln S_{\rm attr}$ & $\Delta\ln S_{\rm elec}$ & $\ln S_{\rm full}$\\
@@ -99,17 +99,19 @@ M085 & -0.198 & 2.211 & 2.001 & 4.014\\
 \end{tabular}
 \end{table}
 
-The attraction-selected pair differs by 0.658 in $\Delta\ln S_{\rm attr}$. The electrostatic pair differs by 1.860 in $\Delta\ln S_{\rm elec}$. LJ spatial maps for M089/M192 are not used to localize attraction because corresponding WCA spatial fields were not computed.
+M089/M192 have standardized geometry distance 0.199; M192 is the nearest geometry neighbor of M089 and M089 is the third-nearest neighbor of M192. Their attractive increments differ by 0.658.
+
+M029/M085 have standardized geometry distance 0.258 and are mutual nearest neighbors. Their electrostatic increments differ by 1.860. The attraction pair is retained as a scalar case study only; its available LJ spatial maps cannot isolate the attractive increment because WCA spatial fields were not calculated.
 
 \section{Spatial mapping and orientation checks}
 
 Spatial insertion fields used a fixed 0.75~\AA{} grid and the validated fixed-position RASPA/RASPALIB evaluator. LJ-only fields used 2,048 orientations per voxel. Full electrostatic fields used 16,384 or 32,768 orientations. Targeted nested 16k$\rightarrow$32k$\rightarrow$64k checks at probability-important voxels gave maximum observed 16k$\rightarrow$32k changes of approximately 0.04\% for M029/CO$_2$, 0.01\% for M029/N$_2$, and 0.002\% for M085/N$_2$; subsequent 32k$\rightarrow$64k changes were smaller.
 
-Probability support was defined as the minimal voxel set containing 99.5\% of insertion probability mass. Local log-selectivity quantities were summarized only within the union of the relevant supports and were weighted by normalized insertion probability. This avoids allowing framework-overlap voxels with effectively zero insertion probability to dominate logarithmic averages.
+Probability support was defined as the minimal voxel set containing 99.5\% of insertion probability mass. Local log-selectivity quantities were summarized only within the union of the relevant supports and were weighted by normalized insertion probability.
 
 \begin{table}[H]
 \centering
-\caption{Probability-supported summaries for the electrostatic matched pair. These are descriptive spatial statistics, not replacements for the production Henry coefficients.}
+\caption{Probability-supported local electrostatic summaries. These are descriptive spatial statistics, not replacements for global Henry coefficients.}
 \begin{tabular}{lrr}
 \toprule
 Quantity & M029 & M085\\
@@ -122,20 +124,37 @@ Weighted IQR local $\delta_{\rm elec}$ & 0.614 & 2.019\\
 \end{tabular}
 \end{table}
 
-\subsection{Per-gas electrostatic response}
+\subsection{Gas-specific electrostatic response}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=.95\linewidth]{figS1_electrostatic_per_gas.pdf}
-\caption{\textbf{Per-gas probability-supported electrostatic increments for the M029/M085 pair.} Full-minus-LJ fields are shown separately for CO$_2$ and N$_2$. These maps support the scalar production result that the large between-framework electrostatic-selectivity contrast is dominated by CO$_2$.}
+\caption{\textbf{Gas-specific probability-supported full-minus-LJ increments for M029 and M085.} The local fields support the global result that the large between-framework electrostatic-selectivity contrast is dominated by CO$_2$.}
 \label{fig:si_spatial_gas}
 \end{figure}
 
-From the production Henry coefficients, $\Delta\ln K_H^{\rm full-LJ}$ for CO$_2$ is 0.162 in M029 and 2.032 in M085. The corresponding N$_2$ values are 0.021 and 0.032. Thus the M085--M029 difference is 1.871 log units for CO$_2$ but only 0.011 for N$_2$.
+From the global Henry calculations, $\Delta\ln K_H^{\rm full-LJ}$ for CO$_2$ is 0.162 in M029 and 2.032 in M085. The corresponding N$_2$ values are 0.021 and 0.032. Thus the M085--M029 difference is 1.871 log units for CO$_2$ but only 0.011 for N$_2$.
+
+\section{Population-wide rank changes}
+
+\begin{table}[H]
+\centering
+\caption{Changes in candidate ordering after each interaction stage. Rank 1 denotes the highest selectivity.}
+\begin{tabular}{lrrrr}
+\toprule
+Transition & Spearman $\rho$ & Median $|\Delta rank|$ & Max promotion & Max demotion\\
+\midrule
+WCA $\rightarrow$ LJ-only & -0.751 & 102 & 234 & 226\\
+LJ-only $\rightarrow$ full & 0.905 & 9 & 175 & 55\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The attraction step therefore reorganizes the ranking throughout the population, whereas electrostatics mostly preserves the global ordering but creates a smaller number of large rank changes.
 
 \section{WCA force-field bridge}
 
-The 15-MOF bridge panel was frozen before the alternative-force-field results were inspected. Supported linker and main-group framework atoms were reassigned from UFF to DREIDING while cobalt retained UFF. Guest models, charges, structures, and the WCA construction were unchanged.
+The 15-MOF bridge panel was selected before the alternative-force-field results were inspected. Supported linker and main-group framework atoms were reassigned from UFF to DREIDING while cobalt retained UFF. Guest models, charges, structures, and the WCA construction were unchanged.
 
 \begin{table}[H]
 \centering
@@ -154,17 +173,13 @@ N$_2$ & 15 & 0.0178 & 0.0507 & 1.000\\
 \begin{figure}[H]
 \centering
 \includegraphics[width=.62\linewidth]{figS2_wca_forcefield_bridge.pdf}
-\caption{\textbf{WCA excess chemical potentials under the baseline and tested alternative framework Lennard--Jones assignments.} The dashed line denotes equality. The bridge supports robustness of the repulsive-accessibility coordinate to this bounded linker-side perturbation only.}
+\caption{\textbf{WCA excess chemical potentials under the baseline and tested alternative framework Lennard--Jones assignments.} The dashed line denotes equality. This supports robustness only to the bounded linker-side perturbation tested here.}
 \label{fig:si_ff_bridge}
 \end{figure}
 
-\section{Ranking changes}
-
-Across the 238-MOF population, the maximum promotion after restoring attraction was 234 positions and the maximum demotion was 226. Restoring electrostatics produced a maximum promotion of 175 positions and a maximum demotion of 55. Complete per-MOF values are provided with the source data.
-
 \section{Source data and reproducibility}
 
-The publication repository contains the authoritative 238-MOF mechanism table, figure source data, descriptor metrics and predictions, spatial-field files for the retained electrostatic pair, WCA bridge tables, final analysis scripts, protocol records, and SHA-256 manifests. The 0.75~\AA{} spatial fields are retained for localization; production Henry coefficients remain authoritative for integrated thermodynamic increments.
+The publication repository contains the 238-MOF mechanism table, source data for all final figures, the geometry-only prediction tables, retained M029/M085 spatial fields, WCA bridge results, simulation protocol, guest definitions, force-field definitions, final analysis scripts, and file hashes.
 
 \bibliographystyle{unsrt}
 \bibliography{references}
