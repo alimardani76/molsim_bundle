@@ -1,0 +1,43 @@
+{
+  "status": "PASS",
+  "publication_population": 238,
+  "template_matches": 238,
+  "template_missing": 0,
+  "template_ambiguous": 0,
+  "distribution_exists": true,
+  "raspalib_importable_in_current_python": false,
+  "backend_candidate_count": 138,
+  "backend_candidates_snapshotted": [
+    {
+      "source": "scripts\\15_refine_pre_pi_publication.py",
+      "snapshot": "reproducibility\\gate_c_backend_snapshot\\01_15_refine_pre_pi_publication_dfe53f7231.py",
+      "sha256": "dfe53f7231f4428357ebcd03559b8d9a0a3ee30ae1b65d72fb6ef89ade12a193",
+      "score": 31
+    },
+    {
+      "source": "path_b_analysis\\paper_closure\\02_spatial_maps\\scripts\\spatial_maps\\finalize_validation.py",
+      "snapshot": "reproducibility\\gate_c_backend_snapshot\\02_finalize_validation_871a5ef820.py",
+      "sha256": "871a5ef82062ff9ece467a3d6d46a23f3a0459a26d905116b54a9ef7ba9294db",
+      "score": 28
+    },
+    {
+      "source": "scripts\\12_cleanup_publication_repo.py",
+      "snapshot": "reproducibility\\gate_c_backend_snapshot\\03_12_cleanup_publication_repo_9157e4b7a2.py",
+      "sha256": "9157e4b7a223a9686ed288ba1a74e2506587207a3bf0b80687d510cda24c65a9",
+      "score": 27
+    },
+    {
+      "source": "path_b_analysis\\paper_closure\\02_spatial_maps\\scripts\\spatial_maps\\fixed_position_energy.py",
+      "snapshot": "reproducibility\\gate_c_backend_snapshot\\04_fixed_position_energy_be398e4c9d.py",
+      "sha256": "be398e4c9d8423250d427f4c56b59895552dfa4c2fd1df7daa8de66835b3aa59",
+      "score": 26
+    },
+    {
+      "source": "scripts\\24_validate_m089_16k_field_against_32k.py",
+      "snapshot": "reproducibility\\gate_c_backend_snapshot\\05_24_validate_m089_16k_field_against_32k_d413c20d45.py",
+      "sha256": "d413c20d457dd4ebb2db8b2397993f4b4d8fe67250ff11cee7cdf59b9cc05882",
+      "score": 18
+    }
+  ],
+  "next_action": "Wire the highest-scoring validated fixed-position backend to the frozen Gate C protocol; do not change probe definitions."
+}

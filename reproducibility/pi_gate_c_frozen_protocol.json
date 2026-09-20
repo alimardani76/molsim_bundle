@@ -1,0 +1,64 @@
+{
+  "status": "GATE_C_PREFLIGHT",
+  "central_claim_changed": false,
+  "new_scientific_scope": "electrostatic probe only",
+  "population_n": 238,
+  "seed": 20260920,
+  "accepted_positions_per_framework_per_gas": 6000,
+  "orientations_per_position": 16,
+  "gases": [
+    "CO2",
+    "N2"
+  ],
+  "pose_evaluation": [
+    "LJ-only and full evaluated at the identical COM position and orientation",
+    "z_elec = -beta * (U_full - U_LJ)",
+    "position accepted when orientation-averaged LJ Boltzmann weight is finite and >0",
+    "position weights use orientation-averaged LJ Boltzmann weight"
+  ],
+  "probe_features_per_gas": [
+    "weighted_median_z_elec",
+    "weighted_q90_z_elec",
+    "weighted_iqr_z_elec",
+    "weighted_fraction_z_elec_gt_1",
+    "weighted_median_orientation_iqr_z_elec"
+  ],
+  "cross_gas_features": [
+    "CO2_minus_N2_weighted_median_z_elec",
+    "CO2_minus_N2_weighted_q90_z_elec"
+  ],
+  "feature_count": 12,
+  "model_target": "delta_lnS_elec_final",
+  "model_comparisons": [
+    "geometry_only",
+    "probe_only",
+    "geometry_plus_probe"
+  ],
+  "cv": {
+    "type": "KFold",
+    "n_splits": 5,
+    "shuffle": true,
+    "random_state": 20260918
+  },
+  "extra_trees": {
+    "n_estimators": 500,
+    "min_samples_leaf": 3,
+    "max_features": 0.7,
+    "random_state": 20260918
+  },
+  "main_text_pass_rule": {
+    "combined_r2_gain_min": 0.1,
+    "combined_mae_ratio_max": 0.9,
+    "combined_mae_gain_bootstrap_ci95_low_gt": 0.0,
+    "probe_only_r2_gain_min": 0.05,
+    "probe_only_mae_ratio_max": 0.95
+  },
+  "hard_stop_after_gate_c": true,
+  "do_not_auto_open": [
+    "alternative force-field campaign",
+    "CO2/CH4 transfer",
+    "GNNs",
+    "feature expansion",
+    "finite-pressure simulations"
+  ]
+}
