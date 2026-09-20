@@ -1,0 +1,17 @@
+{
+  "endpoint_twin_selection": {
+    "fraction_of_all_pairs": 0.05,
+    "number_of_all_pairs": 28203,
+    "number_selected": 1411,
+    "endpoint_difference_cutoff": 0.05384350604156651,
+    "mechanism_distance_median": 0.1888508877942589,
+    "mechanism_distance_q90": 0.5175037057264334,
+    "mechanism_distance_q95": 0.7500572114964288,
+    "mechanism_distance_q99": 1.534115114882373
+  },
+  "mechanism_fingerprint": {
+    "median_magnitude": 2.5863053692724263,
+    "median_angle_rad": 0.12819227227264213,
+    "median_electrostatic_share": 0.11418124284995262
+  }
+}

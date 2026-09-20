@@ -1,0 +1,61 @@
+{
+  "n": 238,
+  "wca_to_lj": {
+    "spearman": -0.7508597634276422,
+    "kendall_tau": -0.5595504024394566,
+    "median_abs_rank_shift": 102.0,
+    "max_promotion": 234.0,
+    "max_demotion": 226.0,
+    "movement_counts": {
+      "10pct": {
+        "threshold_positions": 24,
+        "count": 213,
+        "fraction": 0.8949579831932774
+      },
+      "25pct": {
+        "threshold_positions": 60,
+        "count": 173,
+        "fraction": 0.726890756302521
+      },
+      "50pct": {
+        "threshold_positions": 119,
+        "count": 98,
+        "fraction": 0.4117647058823529
+      }
+    },
+    "top_overlap": {
+      "top10": 0,
+      "top25": 0,
+      "top10pct": 0
+    }
+  },
+  "lj_to_full": {
+    "spearman": 0.9050550573494586,
+    "kendall_tau": 0.8005885898663262,
+    "median_abs_rank_shift": 9.0,
+    "max_promotion": 175.0,
+    "max_demotion": 55.0,
+    "movement_counts": {
+      "10pct": {
+        "threshold_positions": 24,
+        "count": 41,
+        "fraction": 0.1722689075630252
+      },
+      "25pct": {
+        "threshold_positions": 60,
+        "count": 9,
+        "fraction": 0.037815126050420166
+      },
+      "50pct": {
+        "threshold_positions": 119,
+        "count": 6,
+        "fraction": 0.025210084033613446
+      }
+    },
+    "top_overlap": {
+      "top10": 6,
+      "top25": 18,
+      "top10pct": 17
+    }
+  }
+}

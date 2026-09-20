@@ -1,0 +1,49 @@
+{
+  "method": "5000 framework-level bootstrap resamples of fixed existing OOF predictions; models are not refit inside bootstrap",
+  "seed": 20260920,
+  "n": 238,
+  "point": {
+    "median_attr": 2.537375623648152,
+    "median_elec": 0.3094920366015232,
+    "rho_attr_elec": -0.08856753866209373,
+    "fraction_attr_positive": 1.0,
+    "fraction_elec_positive": 1.0,
+    "r2_attr": 0.8744874648851713,
+    "r2_elec": 0.18803998403816946,
+    "predictability_gap": 0.6864474808470018
+  },
+  "ci95": {
+    "median_attr": [
+      2.438285969735578,
+      2.6242393665847468
+    ],
+    "median_elec": [
+      0.2931538318861357,
+      0.3226738915019709
+    ],
+    "rho_attr_elec": [
+      -0.22202875432885055,
+      0.05028332832583179
+    ],
+    "fraction_attr_positive": [
+      1.0,
+      1.0
+    ],
+    "fraction_elec_positive": [
+      1.0,
+      1.0
+    ],
+    "r2_attr": [
+      0.8342485976952466,
+      0.9066194944617093
+    ],
+    "r2_elec": [
+      -0.019518171721388373,
+      0.30125080884525923
+    ],
+    "predictability_gap": [
+      0.5597498842208415,
+      0.9053752180468466
+    ]
+  }
+}
