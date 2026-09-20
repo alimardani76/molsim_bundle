@@ -1,0 +1,16 @@
+claim_id,claim,status
+C01,WCA reference is N2-favoring across the authoritative population,SUPPORTED
+C02,Attractive LJ interactions increase CO2/N2 selectivity across the tested population,SUPPORTED
+C03,Attraction reverses the repulsive N2-favoring baseline toward CO2 preference,SUPPORTED
+C04,Electrostatics provides a positive additional selectivity increment,SUPPORTED
+C05,Attractive and electrostatic increments are only weakly associated,SUPPORTED
+C06,Geometry strongly predicts the WCA coordinate,SUPPORTED
+C07,Geometry strongly predicts the attractive-LJ increment,SUPPORTED
+C08,Geometry provides little practically useful prediction of electrostatic recognition,SUPPORTED
+C09,Geometrically similar frameworks can follow different energetic routes,SUPPORTED
+C10,Successive interaction stages substantially reorder candidate priorities,SUPPORTED
+C11,WCA coordinate is robust to the tested linker-side DREIDING/UFF perturbation,SUPPORTED_BOUNDED
+C12,Full/LJ/electrostatic decomposition is robust to the alternative framework LJ model,NOT_SUPPORTED
+C13,A valid chemistry/RAC hierarchy explains electrostatic recognition,NOT_COMPLETED
+C14,The mechanism transfers to CO2/CH4,NOT_TESTED
+C15,The results establish finite-pressure mixture separation or transport behavior,PROHIBITED

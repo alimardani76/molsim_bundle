@@ -1,0 +1,50 @@
+{
+  "mof": "M085",
+  "gas": "CO2",
+  "mode": "full",
+  "provenance": {
+    "mof": "M085",
+    "gas": "CO2",
+    "mode": "full",
+    "temperature_K": 298.0,
+    "replication": [
+      3,
+      2,
+      4
+    ],
+    "cell_rows_A": [
+      [
+        31.112253000000003,
+        0.0,
+        0.0
+      ],
+      [
+        8.728042254675339,
+        31.67473124656476,
+        0.0
+      ],
+      [
+        -0.0814408929245534,
+        8.864833420011447,
+        31.925979958541472
+      ]
+    ],
+    "volume_A3": 31462.167375036333,
+    "cutoff_vdw_A": 12.0,
+    "cutoff_coulomb_A": 14.953805133547233,
+    "framework_atoms": 1296,
+    "files": {
+      "distribution\\ARCMOF_MECH_V1_PC2\\templates\\M085\\full\\force_field.json": "3451cfcce3587b2c0e1a9e45702c6e51b4571b06068296a0779fb89ebe9322ba",
+      "distribution\\ARCMOF_MECH_V1_PC2\\templates\\M085\\full\\simulation_base.json": "9533a0ebaec39fc090cb51cbc523424e738d22c32515ae687f391f52ea8a1dd0",
+      "distribution\\ARCMOF_MECH_V1_PC2\\shared\\CO2.json": "4cbcdc27af2b78f802849634c76248e88ddc5fe8bdf0afcd94e85c5bb96ded9d",
+      "distribution\\ARCMOF_MECH_V1_PC2\\templates\\M085\\full\\DB0-m15_o11_o30_jea_repeat.cif": "43928a696963cd61920f5bdfed46f9661e89bce843890a01a556fee91aaa75ea"
+    }
+  },
+  "orientations": 32768,
+  "requested_spacing_A": 0.75,
+  "shape": [
+    14,
+    22,
+    12
+  ]
+}

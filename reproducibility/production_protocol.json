@@ -1,0 +1,52 @@
+{
+  "protocol_name": "ARC-MOF selectivity mechanism production v1",
+  "protocol_status": "frozen_candidate_pending_cross_machine_regression",
+  "engine": {
+    "name": "RASPA3",
+    "version": "3.0.29",
+    "conda_build": "h82e5c02_0",
+    "windows_x86_64_executable_sha256": "37ab1e47c0fddaf70a28e5c27c838cc9e4bee3a9f12a87505793f5059e32df91"
+  },
+  "system": {
+    "framework": "rigid",
+    "temperature_K": 298.0,
+    "external_pressure_Pa": 100000.0,
+    "vdw_cutoff_A": 12.0,
+    "mixing_rule": "Lorentz-Berthelot",
+    "truncation_method": "shifted",
+    "tail_corrections": false,
+    "replication_rule": "each perpendicular replicated-cell height >= 2*vdw_cutoff"
+  },
+  "framework_model": {
+    "lj_model": "element-level UFF nonbonded baseline",
+    "lj_registry": "config/uff_framework_registry.csv",
+    "charge_source_priority": ["_atom_type_partial_charge", "_atom_site_charge", "_atom_site_partial_charge"],
+    "full_mode": {"charge_method": "Ewald", "use_charges_from": "PseudoAtoms"},
+    "lj_only_mode": {"charge_method": "None", "all_framework_and_guest_pseudoatom_charges": 0.0}
+  },
+  "guests": ["CO2", "N2"],
+  "sampling": {
+    "default_seeds": [58101, 58102, 58103],
+    "full_cycles": 50000,
+    "lj_only_cycles": 10000,
+    "initialization_cycles": 0,
+    "widom_probability": 1.0,
+    "created_molecules": 0,
+    "workers_pc2": 4,
+    "threads_per_job": 1
+  },
+  "acceptance": {
+    "all_KH_positive_finite": true,
+    "required_matched_seeds": 3,
+    "max_se_ln_KH": 0.05,
+    "max_between_seed_cv": 0.10,
+    "max_se_delta_elec": 0.10,
+    "max_median_native_relative_uncertainty_secondary": 0.10
+  },
+  "adaptive_extension": {
+    "first": "add two matched seeds",
+    "second": "100000 full cycles for unresolved full-mode gas cases",
+    "maximum_disposition": "UNRESOLVED_SAMPLING"
+  },
+  "scope_note": "Mechanistic decomposition within the frozen rigid-framework UFF plus ARC-MOF REPEAT-charge model; not a claim of experimental exactness."
+}

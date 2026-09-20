@@ -1,0 +1,55 @@
+========================================================================================
+MANUSCRIPT NUMBER FREEZE
+========================================================================================
+
+Authoritative population: 238
+
+CORE RESULTS
+median lnS_wca              = -0.203749485237
+median S_wca                = 0.81566668214
+fraction WCA positive       = 0
+median delta_lnS_attr       = 2.53737562365
+median attr multiplier      = 12.6464383687
+fraction attr positive      = 1
+median delta_lnS_elec       = 0.309492036602
+median elec multiplier      = 1.36273271995
+fraction elec positive      = 1
+rho(attr,elec)              = -0.0885675386621
+max telescoping residual    = 8.881784197e-16
+
+RANKING
+max attraction promotion    = 234
+max electrostatic promotion = 175
+max attraction demotion     = 226
+max electrostatic demotion  = 55
+
+MATCHED PAIRS
+ID column: mof_id
+attraction pair delta difference = 0.657637662106
+attraction pair multiplier       = 1.93022709559
+attraction pair |delta lnS_wca|  = 0.0733515585906
+electrostatic pair delta difference = 1.8599934028
+electrostatic pair multiplier       = 6.42369439287
+electrostatic pair |delta lnS_wca|  = 0.00313793117616
+
+DESCRIPTOR METRICS TABLE
+    target  target_column feature_set   n  n_features     cv       r2      mae  baseline_mae
+   lnS_wca        lnS_wca    geometry 238          14 KFold5 0.835027 0.032935      0.092870
+   lnS_wca        lnS_wca    combined 238          14 KFold5 0.836504 0.032640      0.092870
+delta_attr delta_lnS_attr    geometry 238          14 KFold5 0.874487 0.177359      0.549456
+delta_attr delta_lnS_attr    combined 238          14 KFold5 0.873977 0.177943      0.549456
+delta_elec delta_lnS_elec    geometry 238          14 KFold5 0.188040 0.146024      0.146993
+delta_elec delta_lnS_elec    combined 238          14 KFold5 0.192283 0.145620      0.146993
+  lnS_full       lnS_full    geometry 238          14 KFold5 0.845241 0.188768      0.501407
+  lnS_full       lnS_full    combined 238          14 KFold5 0.845132 0.189072      0.501407
+
+WCA ROBUSTNESS TABLE
+scope  n  mean_delta_mu  median_delta_mu  mae_delta_mu  max_abs_delta_mu  pearson_r    pearson_p  spearman_rho   spearman_p  median_abs_rank_shift  max_abs_rank_shift
+  CO2 15       0.022671         0.016402      0.022671          0.056336   0.999936 1.040465e-26      0.996429 2.415979e-15                    0.0                 1.0
+   N2 15       0.017808         0.013292      0.017808          0.050708   0.999938 8.996322e-27      1.000000 0.000000e+00                    0.0                 0.0
+  ALL 30       0.020240         0.015577      0.020240          0.056336   0.999936 5.084460e-56      0.999555 2.910288e-44                    0.0                 1.0
+
+FAMILY LEAVE-ONE-OUT
+NOT COMPLETED — remove from final evidence set.
+
+Saved CSV: C:\Users\KaraPardazesh\Desktop\bundle\v1\mof_selectivity_mechanisms\path_b_analysis\paper_closure\01_evidence_freeze\manuscript_numbers.csv

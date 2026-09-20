@@ -1,0 +1,72 @@
+{
+  "mof": "M085",
+  "gas": "CO2",
+  "mode": "lj_only",
+  "provenance": {
+    "mof": "M085",
+    "gas": "CO2",
+    "mode": "lj_only",
+    "temperature_K": 298.0,
+    "replication": [
+      3,
+      2,
+      4
+    ],
+    "cell_rows_A": [
+      [
+        31.112253000000003,
+        0.0,
+        0.0
+      ],
+      [
+        8.728042254675339,
+        31.67473124656476,
+        0.0
+      ],
+      [
+        -0.0814408929245534,
+        8.864833420011447,
+        31.925979958541472
+      ]
+    ],
+    "volume_A3": 31462.167375036333,
+    "cutoff_vdw_A": 12.0,
+    "cutoff_coulomb_A": 14.953805133547233,
+    "framework_atoms": 1296,
+    "files": {
+      "distribution\\ARCMOF_MECH_V1_PC2\\templates\\M085\\lj_only\\force_field.json": "cc65f96ea2dbe2fda5be91b68969cafa4d7656cf0a2c75a4800cb4eb4c0b4d2b",
+      "distribution\\ARCMOF_MECH_V1_PC2\\templates\\M085\\lj_only\\simulation_base.json": "66913c8cf114d7bfde3115125bad8103aa4c8925c3e2bc46ef621a07abfbf681",
+      "distribution\\ARCMOF_MECH_V1_PC2\\shared\\CO2.json": "4cbcdc27af2b78f802849634c76248e88ddc5fe8bdf0afcd94e85c5bb96ded9d",
+      "distribution\\ARCMOF_MECH_V1_PC2\\templates\\M085\\lj_only\\DB0-m15_o11_o30_jea_repeat.cif": "43928a696963cd61920f5bdfed46f9661e89bce843890a01a556fee91aaa75ea"
+    }
+  },
+  "orientations": 2048,
+  "orientation_seeds": [
+    55017,
+    55018,
+    55019,
+    55020
+  ],
+  "shape": [
+    14,
+    22,
+    12
+  ],
+  "requested_spacing_A": 0.75,
+  "actual_edge_lengths_A": [
+    0.7407679285714286,
+    0.7467101818181819,
+    0.6902910833333333
+  ],
+  "log_cell_mean_weight": 3.280968142192437,
+  "cell_mean_weight": 26.60151428546825,
+  "relative_difference_native": -0.0037768830871297565,
+  "relative_difference_independent_MC": 0.026718747714884916,
+  "normalization": "w / discrete cell mean w; cell-average relative density = 1",
+  "physical_interpretation": "Henry/infinite-dilution COM probability density relative to its cell average; not finite-pressure occupancy",
+  "spatial_domain": "one crystallographic unit cell; native energy uses [3,2,4] supercell",
+  "raw_weight_underflow_count": 1572,
+  "raw_weight_overflow_count": 0,
+  "grid_convergence_status": "candidate; compare spatial refinements before promoting pilot",
+  "mass_weighted_orientation_relative_se": 0.0020355486856655095
+}

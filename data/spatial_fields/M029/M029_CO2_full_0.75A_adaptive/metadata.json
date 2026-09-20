@@ -1,0 +1,59 @@
+{
+  "mof": "M029",
+  "gas": "CO2",
+  "mode": "full",
+  "requested_spacing_A": 0.75,
+  "selected_new_orientation_count": 16384,
+  "reused_partial_32768_points": 0,
+  "provenance": {
+    "mof": "M029",
+    "gas": "CO2",
+    "mode": "full",
+    "temperature_K": 298.0,
+    "replication": [
+      2,
+      2,
+      4
+    ],
+    "cell_rows_A": [
+      [
+        24.450748,
+        0.0,
+        0.0
+      ],
+      [
+        1.6296404347777009e-15,
+        26.614048,
+        0.0
+      ],
+      [
+        4.446322928070283,
+        1.4451739124937785e-15,
+        27.693131307992825
+      ]
+    ],
+    "volume_A3": 18020.844963976688,
+    "cutoff_vdw_A": 12.0,
+    "cutoff_coulomb_A": 12.070780567039094,
+    "framework_atoms": 1088,
+    "files": {
+      "distribution\\ARCMOF_MECH_V1_PC2\\templates\\M029\\full\\force_field.json": "85bf1ba1dafe2b8614665d57ec0258cc9f01640f9d11e734adb44f3633851b91",
+      "distribution\\ARCMOF_MECH_V1_PC2\\templates\\M029\\full\\simulation_base.json": "64779666b4dfe5b2d3648088e854aa772327a91b72ffa47885d684d630341fc6",
+      "distribution\\ARCMOF_MECH_V1_PC2\\shared\\CO2.json": "4cbcdc27af2b78f802849634c76248e88ddc5fe8bdf0afcd94e85c5bb96ded9d",
+      "distribution\\ARCMOF_MECH_V1_PC2\\templates\\M029\\full\\DB0-m15_o100_o150_f0_fsc_repeat.cif": "783d37c49164f607f5e2ecd12bd69bca63ed71e4ce95072b9db2dbb56e176cd6"
+    }
+  },
+  "note": "Minimum per-target orientation count selected by 3-point nested <1% convergence check. Partial 32k voxels imported only after direct <1% overlap check.",
+  "shape": [
+    17,
+    18,
+    10
+  ],
+  "grid_points": 3060,
+  "cell_mean_weight": 284.4988055157539,
+  "log_cell_mean_weight": 5.650729055018921,
+  "mass_weighted_orientation_relative_se": 0.0002597317680863602,
+  "orientation_counts_present": [
+    16384
+  ]
+}

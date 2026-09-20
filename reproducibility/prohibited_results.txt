@@ -1,0 +1,21 @@
+DO NOT USE IN FINAL MANUSCRIPT
+
+- circular permutation:
+  observed_statistic = 0.3962139699373209
+  empirical_p = 9.999000099990002e-05
+
+- invalid chemistry hierarchy:
+  chemistry_rac R2 ~ 0.908
+  geometry_plus_chemistry R2 ~ 0.920
+  all_presimulation R2 ~ 0.897
+
+- do not treat target-derived electrostatic factors, identifiers,
+  filenames, cluster IDs, or descriptor-availability flags as chemistry
+
+- do not reconstruct RASPA bridge seed values from shared outputs
+
+- do not claim:
+  universal force-field independence
+  finite-pressure mixture separation
+  transport selectivity
+  CO2/CH4 transfer

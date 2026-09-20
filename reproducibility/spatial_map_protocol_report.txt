@@ -1,0 +1,218 @@
+============================================================================================
+SPATIAL MAP PROTOCOL FREEZE
+============================================================================================
+
+Package: C:\Users\KaraPardazesh\Desktop\bundle\v1\mof_selectivity_mechanisms\distribution\ARCMOF_MECH_V1_PC2
+
+## SHARED FILES
+
+CO2.json: exists=True
+  bytes=411
+  sha256=4cbcdc27af2b78f802849634c76248e88ddc5fe8bdf0afcd94e85c5bb96ded9d
+N2.json: exists=True
+  bytes=405
+  sha256=20ad2605f1419b38a023d648b9a98f6afd218aa9281cf821a7ab0e18e8ab279b
+production_protocol.json: exists=True
+  bytes=1977
+  sha256=75304a2215c097a0ca1f41a72043fb4af339a3a005c51ee402ed996a73980618
+
+### CO2.json
+{
+  "CriticalTemperature": 304.1282,
+  "CriticalPressure": 7377300.0,
+  "AcentricFactor": 0.22394,
+  "Type": "rigid",
+  "pseudoAtoms": [
+    [
+      "O_co2",
+      [
+        0,
+        0,
+        1.149
+      ]
+    ],
+    [
+      "C_co2",
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    [
+      "O_co2",
+      [
+        0,
+        0,
+        -1.149
+      ]
+    ]
+  ]
+}
+
+### N2.json
+{
+  "CriticalTemperature": 126.192,
+  "CriticalPressure": 3395800.0,
+  "AcentricFactor": 0.0372,
+  "Type": "rigid",
+  "pseudoAtoms": [
+    [
+      "N_n2",
+      [
+        0,
+        0,
+        0.55
+      ]
+    ],
+    [
+      "N_com",
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    [
+      "N_n2",
+      [
+        0,
+        0,
+        -0.55
+      ]
+    ]
+  ]
+}
+
+### production_protocol.json
+{
+  "protocol_name": "ARC-MOF selectivity mechanism production v1",
+  "protocol_status": "frozen_candidate_pending_cross_machine_regression",
+  "engine": {
+    "name": "RASPA3",
+    "version": "3.0.29",
+    "conda_build": "h82e5c02_0",
+    "windows_x86_64_executable_sha256": "37ab1e47c0fddaf70a28e5c27c838cc9e4bee3a9f12a87505793f5059e32df91"
+  },
+  "system": {
+    "framework": "rigid",
+    "temperature_K": 298.0,
+    "external_pressure_Pa": 100000.0,
+    "vdw_cutoff_A": 12.0,
+    "mixing_rule": "Lorentz-Berthelot",
+    "truncation_method": "shifted",
+    "tail_corrections": false,
+    "replication_rule": "each perpendicular replicated-cell height >= 2*vdw_cutoff"
+  },
+  "framework_model": {
+    "lj_model": "element-level UFF nonbonded baseline",
+    "lj_registry": "config/uff_framework_registry.csv",
+    "charge_source_priority": [
+      "_atom_type_partial_charge",
+      "_atom_site_charge",
+      "_atom_site_partial_charge"
+    ],
+    "full_mode": {
+      "charge_method": "Ewald",
+      "use_charges_from": "PseudoAtoms"
+    },
+    "lj_only_mode": {
+      "charge_method": "None",
+      "all_framework_and_guest_pseudoatom_charges": 0.0
+    }
+  },
+  "guests": [
+    "CO2",
+    "N2"
+  ],
+  "sampling": {
+    "default_seeds": [
+      58101,
+      58102,
+      58103
+    ],
+    "full_cycles": 50000,
+    "lj_only_cycles": 10000,
+    "initialization_cycles": 0,
+    "widom_probability": 1.0,
+    "created_molecules": 0,
+    "workers_pc2": 4,
+    "threads_per_job": 1
+  },
+  "acceptance": {
+    "all_KH_positive_finite": true,
+    "required_matched_seeds": 3,
+    "max_se_ln_KH": 0.05,
+    "max_between_seed_cv": 0.1,
+    "max_se_delta_elec": 0.1,
+    "max_median_native_relative_uncertainty_secondary": 0.1
+  },
+  "adaptive_extension": {
+    "first": "add two matched seeds",
+    "second": "100000 full cycles for unresolved full-mode gas cases",
+    "maximum_disposition": "UNRESOLVED_SAMPLING"
+  },
+  "scope_note": "Mechanistic decomposition within the frozen rigid-framework UFF plus ARC-MOF REPEAT-charge model; not a claim of experimental exactness."
+}
+
+============================================================================================
+## TARGET TEMPLATE COMPARISON
+============================================================================================
+
+### M029 — DB0-m15_o100_o150_f0_fsc
+unit cells: [2, 2, 4]
+T: 298.0 K
+full cycles: 50000
+lj-only cycles: 10000
+full ChargeMethod: Ewald
+lj-only ChargeMethod: None
+framework nonzero charges full/lj: 68/0
+guest nonzero charges full/lj: 4/0
+all self-interaction definitions identical full vs lj-only: True
+
+### M085 — DB0-m15_o11_o30_jea
+unit cells: [3, 2, 4]
+T: 298.0 K
+full cycles: 50000
+lj-only cycles: 10000
+full ChargeMethod: Ewald
+lj-only ChargeMethod: None
+framework nonzero charges full/lj: 54/0
+guest nonzero charges full/lj: 4/0
+all self-interaction definitions identical full vs lj-only: True
+
+### M089 — DB0-m15_o11_o75_f0_fsc
+unit cells: [4, 3, 3]
+T: 298.0 K
+full cycles: 50000
+lj-only cycles: 10000
+full ChargeMethod: Ewald
+lj-only ChargeMethod: None
+framework nonzero charges full/lj: 34/0
+guest nonzero charges full/lj: 4/0
+all self-interaction definitions identical full vs lj-only: True
+
+### M192 — DB0-m15_o14_o77_f0_fsc
+unit cells: [4, 3, 2]
+T: 298.0 K
+full cycles: 50000
+lj-only cycles: 10000
+full ChargeMethod: Ewald
+lj-only ChargeMethod: None
+framework nonzero charges full/lj: 56/0
+guest nonzero charges full/lj: 4/0
+all self-interaction definitions identical full vs lj-only: True
+
+============================================================================================
+## CONSISTENCY GATES
+============================================================================================
+
+same temperature across targets: True
+same components across targets: True
+same mixing rule full vs lj and across targets: True
+same VDW cutoff full vs lj and across targets: True
+all self-interaction definitions identical full vs lj-only: True
+all framework charges zero in lj-only: True
+all guest charges zero in lj-only: True
+
+PROTOCOL GATE: PASS

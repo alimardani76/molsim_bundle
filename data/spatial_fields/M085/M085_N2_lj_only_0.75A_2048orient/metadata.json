@@ -1,0 +1,57 @@
+{
+  "mof": "M085",
+  "gas": "N2",
+  "mode": "lj_only",
+  "orientations": 2048,
+  "requested_spacing_A": 0.75,
+  "provenance": {
+    "mof": "M085",
+    "gas": "N2",
+    "mode": "lj_only",
+    "temperature_K": 298.0,
+    "replication": [
+      3,
+      2,
+      4
+    ],
+    "cell_rows_A": [
+      [
+        31.112253000000003,
+        0.0,
+        0.0
+      ],
+      [
+        8.728042254675339,
+        31.67473124656476,
+        0.0
+      ],
+      [
+        -0.0814408929245534,
+        8.864833420011447,
+        31.925979958541472
+      ]
+    ],
+    "volume_A3": 31462.167375036333,
+    "cutoff_vdw_A": 12.0,
+    "cutoff_coulomb_A": 14.953805133547233,
+    "framework_atoms": 1296,
+    "files": {
+      "distribution\\ARCMOF_MECH_V1_PC2\\templates\\M085\\lj_only\\force_field.json": "cc65f96ea2dbe2fda5be91b68969cafa4d7656cf0a2c75a4800cb4eb4c0b4d2b",
+      "distribution\\ARCMOF_MECH_V1_PC2\\templates\\M085\\lj_only\\simulation_base.json": "66913c8cf114d7bfde3115125bad8103aa4c8925c3e2bc46ef621a07abfbf681",
+      "distribution\\ARCMOF_MECH_V1_PC2\\shared\\N2.json": "20ad2605f1419b38a023d648b9a98f6afd218aa9281cf821a7ab0e18e8ab279b",
+      "distribution\\ARCMOF_MECH_V1_PC2\\templates\\M085\\lj_only\\DB0-m15_o11_o30_jea_repeat.cif": "43928a696963cd61920f5bdfed46f9661e89bce843890a01a556fee91aaa75ea"
+    }
+  },
+  "shape": [
+    14,
+    22,
+    12
+  ],
+  "grid_points": 3696,
+  "cell_mean_weight": 3.577231365400719,
+  "log_cell_mean_weight": 1.2745891395943314,
+  "mass_weighted_orientation_relative_se": 0.00013544311246248888,
+  "orientation_counts_present": [
+    2048
+  ]
+}

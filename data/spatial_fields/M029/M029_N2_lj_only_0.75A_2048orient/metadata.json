@@ -1,0 +1,61 @@
+{
+  "mof": "M029",
+  "gas": "N2",
+  "mode": "lj_only",
+  "orientations": 2048,
+  "requested_spacing_A": 0.75,
+  "shape": [
+    17,
+    18,
+    10
+  ],
+  "provenance": {
+    "mof": "M029",
+    "gas": "N2",
+    "mode": "lj_only",
+    "temperature_K": 298.0,
+    "replication": [
+      2,
+      2,
+      4
+    ],
+    "cell_rows_A": [
+      [
+        24.450748,
+        0.0,
+        0.0
+      ],
+      [
+        1.6296404347777009e-15,
+        26.614048,
+        0.0
+      ],
+      [
+        4.446322928070283,
+        1.4451739124937785e-15,
+        27.693131307992825
+      ]
+    ],
+    "volume_A3": 18020.844963976688,
+    "cutoff_vdw_A": 12.0,
+    "cutoff_coulomb_A": 12.070780567039094,
+    "framework_atoms": 1088,
+    "files": {
+      "distribution\\ARCMOF_MECH_V1_PC2\\templates\\M029\\lj_only\\force_field.json": "816854ea315960f1620d40e42bbbaa85060fbd7c0e8752bf84a1e4617891f50e",
+      "distribution\\ARCMOF_MECH_V1_PC2\\templates\\M029\\lj_only\\simulation_base.json": "15bf5a7f7ce603f1f3fd30e5d75dd113690bc1428cb810443dd8019321cf10e7",
+      "distribution\\ARCMOF_MECH_V1_PC2\\shared\\N2.json": "20ad2605f1419b38a023d648b9a98f6afd218aa9281cf821a7ab0e18e8ab279b",
+      "distribution\\ARCMOF_MECH_V1_PC2\\templates\\M029\\lj_only\\DB0-m15_o100_o150_f0_fsc_repeat.cif": "783d37c49164f607f5e2ecd12bd69bca63ed71e4ce95072b9db2dbb56e176cd6"
+    }
+  },
+  "grid_points": 3060,
+  "energy_evaluations": 6266880,
+  "actual_edge_lengths_A": [
+    0.7191396470588236,
+    0.7392791111111111,
+    0.7011951
+  ],
+  "cell_mean_weight": 16.166097479934365,
+  "log_cell_mean_weight": 2.7829163012287914,
+  "mass_weighted_orientation_relative_se": 0.00016889880551237355,
+  "physical_interpretation": "Infinite-dilution Henry COM probability field; relative_density is normalized to cell mean 1."
+}
