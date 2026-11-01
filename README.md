@@ -1,37 +1,67 @@
-# CO2/N2 Henry-selectivity mechanisms in metal–organic frameworks
+# CO₂/N₂ selectivity in MOFs — reproducible analysis and JCTC v11 figure redraws
 
-**Publication state:** JCTC v11 reconciliation branch (draft; not a validated end-to-end reproducibility release).  
-**Manuscript provenance:** user-supplied `v10_P01_Selectivity_Origin_Map_PCCP_LaTeX_Submission.zip` and corrected `JCTC_Selectivity_Revised_v11.zip`, both dated 2026-11-01. The submitted v10 contains six main and four SI figures, unlike the older five-figure repository manuscript.
+This repository contains the curated **final** numerical evidence for a
+238-framework rigid-MOF Henry-regime selectivity study, plus Python code to
+recompute headline checks and generate **ten JCTC v11 statistical redraws**.
 
-## Key result
-On the 238-framework common panel, the WCA reference favors N2 (median ln S = -0.203749485237). Restoring LJ attraction raises log-selectivity (median increment 2.53737562365) and electrostatics raises it further (median increment 0.309492036602). All values refer to simulated Henry-regime CO2/N2 selectivity, **not** finite-pressure mixture performance.
+**Version information**
+- Reference manuscript: corrected **JCTC v11** (2026-11-01), supplied as
+  \`JCTC_Selectivity_Revised_v11.zip\` with six main and four SI PDFs.
+- Plotting implementation: **new data-equivalent redraws**, not the unarchived
+  original v11 plotting code; figures are not byte-identical.
+- RASPA production protocol: **RASPA3 3.0.29**, conda build
+  \`h82e5c02_0\`; full binary SHA256 in
+  \`reproducibility/production_protocol.json\`.
+- Repo manuscript and original PDFs in \`manuscript/\` and \`figures/\`
+  are from an **older revision**; they are *not* the JCTC v11 source.
 
-## Repository contents
-- `data/authoritative/path_b_final_238_authoritative.csv`: 238-framework calculation-level result table.
-- `data/source_data/`: archived final descriptor CV predictions, metrics, matched-pair and rank-transition sources, WCA robustness and bridge sources. File provenance should be checked against each v11 panel before publication.
-- `data/spatial_fields/`: retained final M029/M085 fields for the older mechanism-first visualization, not a complete simulation trajectory archive.
-- `analysis/final/`: legacy final-analysis scripts. **Some contain machine-specific absolute/relative paths and do not run directly in this checkout.**
-- `reproducibility/production_protocol.json`: simulation configuration; `reproducibility/*force_field_reference.json`, `CO2.json`, `N2.json`, and `uff_framework_registry.csv`: retained force-field reference artifacts.
-- `manuscript/`, `figures/`: older five-main-figure branch artifacts. **Do not cite as the 2026-11-01 JCTC v11 manuscript.**
-- `scripts/verify_publication_data.py`: lightweight integrity/thermodynamic arithmetic test requiring pandas and numpy.
-- `docs/JCTC_V11_ALIGNMENT.md`: precise version mapping and missing reproduction prerequisites.
+## Rebuild the final figures
 
-## Run the verified available checks
-```bash
+\`\`\`bash
 git clone https://github.com/alimardani76/molsim_bundle.git
 cd molsim_bundle
-python -m pip install numpy pandas
+git checkout jctc-v11-figure-redraw
+python -m pip install -r requirements-figures.txt
 python scripts/verify_publication_data.py
-```
-This checks the authoritative table, the decomposition identity and the headline medians. It **does not** rerun RASPA, reconstruct cross-validation folds, or redraw all ten JCTC panels.
+python scripts/redraw_jctc_v11.py
+\`\`\`
 
-## Simulation used
-According to the archived `production_protocol.json`: RASPA3 3.0.29 (conda build `h82e5c02_0`; archived Windows x86-64 executable SHA256 `37ab1e47c0fddaf70a28e5c27c838cc9e4bee3a9f12a87505793f5059e32df91`). Rigid frameworks at 298 K; 12 Å shifted LJ cutoff; Lorentz–Berthelot mixing; no tail corrections; framework LJ from UFF and framework charges from the ARC-MOF source; charged full model uses Ewald, LJ-only charges disabled. Full Widom sampling: 50,000 cycles per seed; LJ-only: 10,000 cycles per seed; default seeds 58101–58103. WCA sampling was adaptive. The archived protocol status is `frozen_candidate_pending_cross_machine_regression`, **not a proven exact cross-machine reproduction**.
+Ten editable **SVG** and publication **PDF** redraws appear in
+\`generated_figures/jctc_v11/\`. Run a subset using \`--only main\` or
+\`--only si\`. Alternatively download the PDFs and SVGs from the successful
+[GitHub Actions build](https://github.com/alimardani76/molsim_bundle/actions/workflows/jctc-v11-plots.yml).
 
-## Reproduction levels
-1. **Recompute article-level summaries:** run `scripts/verify_publication_data.py`; consult the frozen source-data CSVs.
-2. **Inspect existing plots:** `figures/` contains the older mechanism-first publication figures. Source scripts `analysis/final/` need path normalization and missing external inputs for a clean rerun.
-3. **Redraw exact JCTC v11 figures:** **not yet verified**; the v11 figure PDFs are available in the separate manuscript bundle, but the authoring scripts for each of its six main/four SI plots have not been traced and tested against final sources.
-4. **Regenerate raw simulations:** **not yet available end-to-end**: the original CIF set, exact input/job-builder scripts, WCA job registry, and full seed-level outputs must be linked with hashes, and RASPA rerun must be validated.
+## Scientific outputs and sources
 
-The repository is a documented evidence archive, not yet a complete reproducibility capsule. See `docs/JCTC_V11_ALIGNMENT.md` for blockers.
+| Stage | Final evidence |
+| --- | --- |
+| 238-framework Henry coefficient / selectivity analysis | \`data/authoritative/path_b_final_238_authoritative.csv\` |
+| Mechanism, geometry, matched pair, ranks, shortlist | \`data/source_data/fig*.csv\`, \`matched_pair_geometry_context.csv\` |
+| Descriptor model predictions and metrics | \`data/source_data/descriptor_hierarchy_predictions.csv\`, \`descriptor_hierarchy_metrics.csv\` |
+| WCA precision and force-field bridge | final WCA fields in 238-row table; \`data/source_data/wca_*csv\` |
+| M029 / M085 spatial diagnostics | retained \`data/spatial_fields/\` arrays and \`spatial_*summary.csv\` |
+| Source plot implementation | \`scripts/redraw_jctc_v11.py\` |
+| Original analysis scripts | \`analysis/final/\` (some legacy paths still need repair) |
+
+The key reported medians: WCA log S −0.203749485237, attractive increment
+2.537375623648, electrostatic increment 0.309492036602. The verification
+script checks all 238 records and their telescoping thermodynamic identity.
+
+## Simulation settings (archived production protocol)
+
+Widom insertion with RASPA3 3.0.29; rigid frameworks, 298 K, shifted LJ
+cutoff 12 Å, Lorentz–Berthelot mixing, no tail corrections, UFF framework
+LJ parameters and source ARC-MOF partial charges; Ewald in the full model,
+charges disabled in LJ-only. Full: 50,000 cycles/seed; LJ-only:
+10,000 cycles/seed; nominal seeds 58101–58103. WCA is an adaptive
+repulsive-reference calculation. The recorded protocol is marked
+\`frozen_candidate_pending_cross_machine_regression\`.
+
+**Reproducibility limitation:** the analysis-data checks and figure redraw
+were executed by GitHub Actions. The original CIF inputs, complete RASPA
+seed-level jobs, WCA ledger, and portable from-structure job generator
+are not included, so raw simulations are **not yet independently rerunnable**.
+The v11 corrected manuscript's LaTeX and its exact ten original PDFs also
+have **not** been copied into the GitHub repository. Read
+\`docs/JCTC_V11_REDRAW.md\` and \`docs/JCTC_V11_ALIGNMENT.md\` before citing
+this as an exact paper reproduction.
