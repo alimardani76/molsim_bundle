@@ -63,7 +63,7 @@ def rebuild(output):
                float((d[col]>0).mean()),src,"fraction")
     record(rows,"mechanism","fraction_WCA_positive",(d.lnS_wca>0).mean(),src,"fraction")
     record(rows,"mechanism","spearman_attr_vs_elec",
-           d.delta_lnS_attr.corr(d.delta_lnS_elec,method="spearman"),src)
+           d[["delta_lnS_attr","delta_lnS_elec"]].corr(method="spearman").iloc[0,1],src)
     record(rows,"mechanism","max_telescoping_error",max(err1,err2),src)
 
     # Ranks use 1 = highest selectivity; the frozen manuscript uses 'min' ties.
