@@ -1,49 +1,32 @@
-# JCTC v11 plot reproduction: exact provenance and status
+# JCTC v11 figure reproduction
 
-This branch contains a NEW portable Python redraw script for ten statistical
-plots, sourced from the frozen final 238-framework table and selected final
-source-data CSVs already committed in the repository.
+**Source of truth:** the corrected JCTC v11 package dated 2026-11-01 is separate from the older repository manuscript. This repository provides a tested *new statistical redraw*, not the original plotting implementation.
 
-## Versions
-- Revised manuscript: **JCTC v11**, 2026-11-01.
-- Original revised package: \`JCTC_Selectivity_Revised_v11.zip\` (user-provided);
-  ten PDFs: figs 1–6, S1–S4, corrected main.tex/SI.
-- Original repository paper: older \`mechanism-first\` main.tex and 5 main/2 SI plots.
-- Simulation: **RASPA3 3.0.29**; exact build/hash and model details in
-  \`reproducibility/production_protocol.json\`; protocol status remains
-  \`frozen_candidate_pending_cross_machine_regression\`.
+## One-command steps
 
-## Regenerate the ten statistical figure redraws
-
-\`\`\`bash
-git clone https://github.com/alimardani76/molsim_bundle.git
-cd molsim_bundle
-git checkout jctc-v11-figure-redraw
+```bash
 python -m pip install -r requirements-figures.txt
 python scripts/verify_publication_data.py
+python scripts/rebuild_paper_results.py
 python scripts/redraw_jctc_v11.py
-\`\`\`
+```
 
-Output: \`generated_figures/jctc_v11/\` with **10 SVG and 10 PDF files**.
-SVGs contain editable vectors and text. Output files are deliberately untracked.
-GitHub Actions builds/upload the redraws as artifacts.
+Source data: `data/authoritative/path_b_final_238_authoritative.csv` plus final CSV files in `data/source_data/`.
 
-## Scope and integrity
+Created files:
+- `generated_results/final_selectivity_238.csv`
+- `generated_results/paper_numbers.csv`
+- `generated_figures/jctc_v11/*.pdf` (ten PDFs)
+- `generated_figures/jctc_v11/*.svg` (ten editable SVGs)
 
-- This script redraws reported **statistical content**, using *final*
-  selectivity, geometry-model metrics, matched contrast, rank transitions,
-  WCA SEs and per-gas Henry increment fields.
-- The full 238-row file and final summary files in \`data/source_data/\` are
-  inputs. No exploratory runs or raw RASPA trajectory dumps are necessary
-  for redrawing these statistical panels.
-- **Important:** the script is a new implementation, **not** the original
-  unarchived v11 figure-source code. Layout, jitter, fonts, choice of
-  illustrative cases and several panel styles can differ.
-- The provided JCTC v11 *reference PDFs*, and corrected \`main.tex\` and SI,
-  are **not yet present in this GitHub branch**. Do not misrepresent the
-  older \`manuscript/\` or \`figures/\` directories as v11 artifacts.
-- Exact rerun from CIF/seed/force-field input files remains pending.
-- Count discrepancy in WCA jobs (2052 vs 2034) remains unresolved in primary records.
+A GitHub Actions workflow regenerates and uploads these files. This output documents **numerical regeneration and visualization**, not a rerun of RASPA or exact original figure artistry.
 
-For manuscript evidence comparison and limitations, see
-\`docs/JCTC_V11_ALIGNMENT.md\`.
+## Simulation provenance
+
+RASPA3 3.0.29 (conda build `h82e5c02_0`) is recorded in `reproducibility/production_protocol.json`. Original CIF/seed-level run directories and the full portable job runner are not archived here. This is explicitly a **limitation of end-to-end reproducibility**.
+
+## Source-data mapping
+
+Main 1/2/6 and SI S1–S4 derive directly from the final 238-MOF table. Main 3 uses `fig3_geometry_information_source.csv`, main 4 uses `fig4_matched_pair_scalar_source.csv` and `fig4_per_gas_global_increment_source.csv`, and main 5 uses `fig5_rank_transition_source.csv`.
+
+**Pending for exact JCTC v11 release:** original v11 figures/TeX in GitHub, exact panel styling verification, CIF + original job inputs + raw outputs, WCA job-count reconciliation.

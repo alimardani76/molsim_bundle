@@ -1,7 +1,13 @@
-name: Rebuild manuscript statistical plots
+name: Rebuild manuscript results and statistical plots
 on:
   push:
-    branches: [jctc-v11-figure-redraw]
+    branches: [mechanism-first, jctc-v11-figure-redraw]
+    paths:
+      - 'README.md'
+      - 'scripts/**'
+      - 'data/**'
+      - 'requirements-figures.txt'
+      - '.github/workflows/jctc-v11-plots.yml'
   workflow_dispatch:
 jobs:
   redraw:
@@ -13,13 +19,20 @@ jobs:
           python-version: '3.11'
       - run: python -m pip install -r requirements-figures.txt
       - run: python scripts/verify_publication_data.py
+      - run: python scripts/rebuild_paper_results.py
       - run: python scripts/redraw_jctc_v11.py
-      - name: Verify figure outputs
+      - name: Verify all outputs
         run: |
+          test -s generated_results/final_selectivity_238.csv
+          test -s generated_results/paper_numbers.csv
           for f in fig1_interaction_pathway fig2_mechanism_diversity fig3_geometry_information fig4_matched_contrast fig5_ranking_consequences fig6_family_and_shortlist figS1_precision_diagnostics figS2_gas_specific_increment figS3_family_details figS4_shortlist_membership; do
             test -s "generated_figures/jctc_v11/$f.pdf"
             test -s "generated_figures/jctc_v11/$f.svg"
           done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: jctc-v11-final-paper-results
+          path: generated_results/
       - uses: actions/upload-artifact@v4
         with:
           name: jctc-v11-statistical-redraws
