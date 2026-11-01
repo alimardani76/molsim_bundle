@@ -28,7 +28,7 @@ The study used **RASPA3 3.0.29** (conda build `h82e5c02_0`), Widom test-particle
 - [CO₂ geometry/model reference](reproducibility/CO2.json) and [N₂ geometry/model reference](reproducibility/N2.json)
 - [Full force-field reference](reproducibility/full_force_field_reference.json), [LJ-only reference](reproducibility/lj_only_force_field_reference.json), [UFF registry](reproducibility/uff_framework_registry.csv)
 
-**Current reproducibility boundary:** This repository does **not** contain the full original CIF set, complete per-seed RASPA input/output directories, the WCA job ledger, or a verified portable job-generation and execution script. Consequently, **a from-CIF simulation rerun cannot currently be performed from this checkout alone**. These archived JSONs document the configuration; they are not a complete `raspa3` executable workflow. The production protocol is labelled `frozen_candidate_pending_cross_machine_regression`. Do not claim full simulation replay until these files have been restored and tested.
+**Current reproducibility boundary:** This repository does **not** contain the full original CIF set, complete per-seed RASPA input/output directories, the WCA job ledger, or a verified portable job-generation and execution script. Consequently, **a from-CIF simulation rerun cannot currently be performed from this checkout alone**. These archived JSONs document the configuration; they are not a complete `raspa3` executable workflow. The production protocol is labelled `frozen_candidate_pending_cross_machine_regression`. The exact **ARC-MOF source-data release/commit** is also not identified by the retained protocol; do not invent a dataset version. Do not claim full simulation replay until the original inputs and provenance have been restored and tested.
 
 ## 2. Simulation results — where are the computed Henry coefficients?
 
@@ -68,7 +68,7 @@ python scripts/redraw_jctc_v11.py
 - **Code:** [`scripts/redraw_jctc_v11.py`](scripts/redraw_jctc_v11.py).
 - **Numerical source:** [238-MOF table](data/authoritative/path_b_final_238_authoritative.csv) plus the supporting [figure source CSVs](data/source_data/).
 - **Output:** `generated_figures/jctc_v11/` — six main figures and four SI figures, each as PDF and editable SVG.
-- **Download prebuilt files:** [successful GitHub Actions figure build](https://github.com/alimardani76/molsim_bundle/actions/runs/41309112396) → *Artifacts* → `jctc-v11-statistical-redraws`. A new build can be launched from [Actions](https://github.com/alimardani76/molsim_bundle/actions/workflows/jctc-v11-plots.yml).
+- **Download prebuilt files:** [successful GitHub Actions build](https://github.com/alimardani76/molsim_bundle/actions/runs/41309948904) → *Artifacts* → `jctc-v11-statistical-redraws` (PDFs and SVGs) and `jctc-v11-final-paper-results` (CSV files). A new build can be launched from [Actions](https://github.com/alimardani76/molsim_bundle/actions/workflows/jctc-v11-plots.yml).
 
 | Figure | Direct numerical inputs |
 | --- | --- |
